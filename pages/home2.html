@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillora SaaS | Advanced Learning Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="font-sans bg-slate-50 text-slate-800">
+
+    <!-- SaaS Navbar -->
+    <header class="sticky top-0 z-50 glass shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <a href="../index.html" class="group flex items-center gap-3 no-underline">
+                <div
+                    class="w-10 h-10 bg-primary-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition duration-300">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black text-gray-900 leading-none">Skillora</span>
+                    <span class="text-[10px] font-bold text-primary-blue uppercase tracking-widest">Pro SaaS</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex space-x-8 text-slate-600 font-medium">
+                <a href="../index.html" class="hover:text-primary-blue transition">Home</a>
+                <a href="home2.html" class="text-primary-blue">SaaS View</a>
+                <a href="about.html" class="hover:text-primary-blue transition">About</a>
+                <a href="services.html" class="hover:text-primary-blue transition">Pricing</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="user-dropdown-container">
+                    <button id="user-menu-button"
+                        class="hidden sm:flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 text-gray-400 hover:text-primary-blue hover:border-primary-blue transition duration-300">
+                        <i data-lucide="user-circle" class="w-6 h-6"></i>
+                    </button>
+                    <div id="user-dropdown"
+                        class="hidden absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-[100]">
+                        <a href="login.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Log
+                            In</a>
+                        <a href="signup.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Sign
+                            Up</a>
+                    </div>
+                </div>
+                <a id="navbar-cta" href="signup.html"
+                    class="hidden md:flex items-center justify-center btn-skillora btn-skillora-sm no-underline">
+                    Get Started
+                </a>
+                <button id="mobile-menu-button" class="lg:hidden text-primary-blue">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div id="mobile-menu" class="lg:hidden bg-white shadow-xl absolute w-full left-0 top-full overflow-hidden">
+            <a href="../index.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Home</a>
+            <a href="about.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">About Us</a>
+            <a href="services.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Services</a>
+            <a href="blog.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Blog</a>
+            <a href="contact.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Contact Us</a>
+            <a href="admin-dashboard.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Admin Dashboard</a>
+            <a href="login.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Login</a>
+            <a href="signup.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Sign Up</a>
+            <button onclick="openModal()" class="w-full btn-skillora rounded-none py-4">Book Demo</button>
+        </div>
+    </header>
+
+    <!-- SaaS Hero: Split Screen -->
+    <section class="pt-20 pb-24 lg:pt-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+            <div data-animate="fade-up" class="text-center lg:text-left">
+                <div
+                    class="inline-flex items-center space-x-2 bg-indigo-50 text-indigo-600 px-4 py-2 rounded-full text-sm font-semibold mb-8">
+                    <span>New Feature: AI Personalized Learning Paths</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight mb-8">
+                    The Modern <span class="text-gradient">LMS</span> for Scaling Skills
+                </h1>
+                <p class="text-xl text-slate-600 mb-12 max-w-xl mx-auto lg:mx-0">
+                    Skillora helps high-growth teams and students master new concepts 4x faster with data-driven
+                    insights and interactive modules.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <button onclick="openModal()" class="btn-skillora !rounded-xl !py-4 !px-10">Start
+                        Learning</button>
+                    <button
+                        class="bg-white text-slate-700 font-bold py-4 px-10 rounded-xl shadow-sm border border-slate-200 hover:bg-slate-50 transition duration-300">Schedule
+                        Demo</button>
+                </div>
+            </div>
+
+            <div data-animate="fade-up" class="mt-16 lg:mt-0">
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-primary-blue to-secondary-pink rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000">
+                    </div>
+                    <div class="relative bg-white rounded-[2rem] p-4 shadow-2xl border border-slate-100">
+                        <img src="../img/Why choose us.jpeg" alt="Dashboard Preview"
+                            class="w-full h-auto rounded-[1.5rem] object-cover">
+                        <div
+                            class="absolute -top-10 -right-10 bg-white p-4 rounded-2xl shadow-xl hidden md:block border border-slate-100">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                                    <i data-lucide="trending-up"></i>
+                                </div>
+                                <p class="font-bold">89% Completion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works: Step Cards with Connectors -->
+    <section class="py-24 bg-slate-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-20" data-animate="fade-up">
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-4">How Skillora Works</h2>
+                <p class="text-slate-600">Three simple steps to mastery.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="step-connector text-center" data-animate="fade-up">
+                    <div
+                        class="w-20 h-20 bg-primary-blue text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-8 shadow-xl relative z-10">
+                        1
+                        <div class="absolute -inset-2 border-2 border-primary-blue/30 rounded-full animate-pulse"></div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Assessment</h3>
+                    <p class="text-slate-600">Take a short quiz to identify your current skill gaps and goals.</p>
+                </div>
+                <div class="step-connector text-center" data-animate="fade-up">
+                    <div
+                        class="w-20 h-20 bg-secondary-pink text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-8 shadow-xl relative z-10">
+                        2
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Custom Path</h3>
+                    <p class="text-slate-600">Get a personalized learning journey based on your specific needs.</p>
+                </div>
+                <div class="step-connector text-center" data-animate="fade-up">
+                    <div
+                        class="w-20 h-20 bg-indigo-600 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-8 shadow-xl relative z-10">
+                        3
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Achievement</h3>
+                    <p class="text-slate-600">Earn industry-recognized certifications and track your growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits: Hoverable Info Cards -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div data-animate="fade-up">
+                    <h2 class="text-4xl font-extrabold text-slate-900 mb-8 leading-tight">Why Teams Choose <br> Our SaaS
+                        Platform</h2>
+                    <p class="text-lg text-slate-600 mb-10">We've built the ultimate ecosystem for interactive
+                        education, combining human empathy with machine precision.</p>
+                    <button
+                        class="text-primary-blue font-bold flex items-center gap-2 hover:gap-4 transition-all">Explore
+                        all features <i data-lucide="arrow-right"></i></button>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-8">
+                    <div class="p-8 bg-slate-50 rounded-3xl group border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-primary-blue transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+                        data-animate="fade-up">
+                        <div
+                            class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm text-slate-400 group-hover:text-primary-blue group-hover:bg-indigo-50 transition-colors">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2">Secure & Private</h4>
+                        <p class="text-sm text-slate-500">Your learning data is encrypted and secure with us.</p>
+                    </div>
+                    <div class="p-8 bg-slate-50 rounded-3xl group border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-secondary-pink transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+                        data-animate="fade-up">
+                        <div
+                            class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm text-slate-400 group-hover:text-secondary-pink group-hover:bg-pink-50 transition-colors">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-2">Lightning Fast</h4>
+                        <p class="text-sm text-slate-500">Access modules instantly on any device worldwide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full-Width Animated CTA -->
+    <section class="py-24 animate-gradient text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center" data-animate="fade-up">
+            <h2 class="text-4xl sm:text-6xl font-extrabold mb-8 italic">Ready to Scale Your Knowledge?</h2>
+            <p class="text-xl opacity-90 mb-12">Get 50% off your first 3 months with code <span
+                    class="bg-white/20 px-3 py-1 rounded font-mono">SKILLORA50</span></p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button onclick="openModal()"
+                    class="bg-white text-indigo-600 font-bold py-4 px-12 rounded-full text-lg shadow-2xl hover:scale-105 transition duration-300">Get
+                    Skillora Pro</button>
+                <a href="contact.html"
+                    class="border-2 border-white text-white font-bold py-4 px-12 rounded-full hover:bg-white/10 transition duration-300">Contact
+                    Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="bg-primary-blue text-white pt-20 pb-10 border-t border-blue-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1">
+                    <a href="../index.html" class="flex items-center gap-3 mb-6 group">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-primary-blue shadow-lg group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black text-white tracking-tight">Skillora</span>
+                    </a>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6">Revolutionizing modern education
+                        through
+                        precision, play, and practical mastery.</p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About
+                                Us</a>
+                        </li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a>
+                        </li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Support</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact
+                                Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact/Social -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Connect</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm mb-6">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <span>123 Innovation Dr, Tech City</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <a href="mailto:hello@skillora.com"
+                                class="hover:text-white transition">hello@skillora.com</a>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-blue-500 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-200 text-sm">
+                <p>&copy; 2026 Skillora. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Modal -->
+    <div id="demoModal"
+        class="fixed inset-0 bg-slate-900/60 hidden items-center justify-center z-[100] transition-opacity duration-300 opacity-0">
+        <div
+            class="modal-content bg-white p-10 rounded-2xl max-w-lg w-full m-4 shadow-2xl relative transition-transform duration-300 transform scale-95">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-800"><i
+                    data-lucide="x"></i></button>
+            <h3 class="text-2xl font-bold mb-4">Join the Waitlist</h3>
+            <p class="text-slate-600 mb-8">Skillora Pro is in high demand. Secure your spot now.</p>
+            <form data-validate class="space-y-4">
+                <input type="email" placeholder="Work Email" required
+                    class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 ring-primary-blue/20">
+                <button type="submit" class="w-full btn-skillora !py-4 !rounded-xl">Request
+                    Access</button>
+                <div class="success-msg hidden text-green-600 text-center font-bold">You're on the list!</div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

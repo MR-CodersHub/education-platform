@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details | Skillora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .faq-item input:checked+label i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item input:checked~.faq-content {
+            max-height: 500px;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-slate-50 text-slate-800">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 glass shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex lg:hidden items-center justify-center w-10 h-10 bg-blue-50 text-primary-blue rounded-xl transition-all hover:bg-blue-100 mr-2">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </a>
+            <a href="../index.html" class="group flex items-center gap-3 no-underline">
+                <div
+                    class="w-10 h-10 bg-primary-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition duration-300">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-black text-slate-900 tracking-tight">Skillora</span>
+            </a>
+
+            <div class="hidden lg:flex space-x-8 text-slate-600 font-medium">
+                <a href="../index.html" class="hover:text-primary-blue transition">Home</a>
+                <a href="about.html" class="hover:text-primary-blue transition">About Us</a>
+                <a href="services.html" class="hover:text-primary-blue transition">Services</a>
+                <a href="blog.html" class="hover:text-primary-blue transition">Blog</a>
+                <a href="contact.html" class="hover:text-primary-blue transition">Contact Us</a>
+                </div>
+
+            <div class="flex items-center gap-4">
+                <div class="user-dropdown-container">
+                    <button id="user-menu-button"
+                        class="hidden sm:flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 text-gray-400 hover:text-primary-blue hover:border-primary-blue transition duration-300">
+                        <i data-lucide="user-circle" class="w-6 h-6"></i>
+                    </button>
+                    <div id="user-dropdown"
+                        class="hidden absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-[100]">
+                        <a href="login.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Log
+                            In</a>
+                        <a href="signup.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Sign
+                            Up</a>
+                    </div>
+                </div>
+                <a id="navbar-cta" href="signup.html"
+                    class="hidden md:flex items-center justify-center btn-skillora btn-skillora-sm no-underline">
+                    Get Started
+                </a>
+                <button id="mobile-menu-button" class="lg:hidden text-primary-blue"><i data-lucide="menu"></i></button>
+            </div>
+            <div id="mobile-menu" class="lg:hidden bg-white shadow-xl absolute w-full left-0 top-full overflow-hidden">
+            <a href="../index.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Home</a>
+            <a href="about.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">About Us</a>
+            <a href="services.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Services</a>
+            <a href="blog.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Blog</a>
+            <a href="contact.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Contact Us</a>
+            <a href="admin-dashboard.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Admin Dashboard</a>
+            <a href="login.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Login</a>
+            <a href="signup.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Sign Up</a>
+            <button onclick="openModal()" class="w-full btn-skillora rounded-none py-4">Book Demo</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-32 overflow-hidden bg-slate-900 text-white">
+        <div class="absolute inset-0 opacity-30">
+            <img src="../img/Upper Primary (Grades 4-6).jpeg" alt="Course Cover" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10 text-center">
+            <nav class="flex justify-center mb-8 text-sm gap-2 uppercase tracking-widest font-bold text-blue-400">
+                <a href="services.html" class="hover:underline">Services</a>
+                <span>/</span>
+                <span>Academic Mastery</span>
+            </nav>
+            <h1 class="text-4xl sm:text-6xl font-extrabold mb-6 animate-headline" data-animate="fade-up">Upper Primary
+                (Grades 4-6) <br> <span class="text-gradient">Foundation Course</span></h1>
+            <p class="text-xl text-slate-300 max-w-2xl mx-auto mb-10" data-animate="fade-up">Master fundamental logic,
+                competitive arithmetic, and the Singapore Math method with our world-class instructors.</p>
+            <div class="flex flex-wrap justify-center gap-6" data-animate="fade-up">
+                <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg backdrop-blur-md">
+                    <i data-lucide="clock" class="text-secondary-pink w-5 h-5"></i>
+                    <span class="font-bold">32 Live Sessions</span>
+                </div>
+                <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg backdrop-blur-md">
+                    <i data-lucide="users" class="text-secondary-pink w-5 h-5"></i>
+                    <span class="font-bold">1.2k+ Students</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabbed Content Section -->
+    <section class="py-20 -mt-16 relative z-20">
+        <div class="max-w-5xl mx-auto px-4">
+            <!-- Tabs Menu -->
+            <div class="bg-white rounded-2xl shadow-xl p-2 flex flex-wrap gap-2 mb-12 border border-slate-100"
+                data-animate="fade-up">
+                <button class="tab-btn active flex-1 py-4 rounded-xl font-bold transition duration-300"
+                    data-tab="overview">Overview</button>
+                <button class="tab-btn flex-1 py-4 rounded-xl font-bold transition duration-300"
+                    data-tab="faqs">FAQs</button>
+                <button class="tab-btn flex-1 py-4 rounded-xl font-bold transition duration-300"
+                    data-tab="pricing">Pricing</button>
+                <button class="tab-btn flex-1 py-4 rounded-xl font-bold transition duration-300"
+                    data-tab="reviews">Reviews</button>
+            </div>
+
+            <!-- Tab Content: Overview -->
+            <div id="overview" class="tab-pane bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
+                <h2 class="text-3xl font-bold text-slate-900 mb-8">What You'll Learn</h2>
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-10 h-10 bg-green-50 text-green-600 rounded-lg flex items-center justify-center shrink-0">
+                            <i data-lucide="check" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">Visual Modeling</h4>
+                            <p class="text-slate-500 text-sm">Singapore Math techniques to solve word problems without
+                                variables.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-10 h-10 bg-green-50 text-green-600 rounded-lg flex items-center justify-center shrink-0">
+                            <i data-lucide="check" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">Fraction Mastery</h4>
+                            <p class="text-slate-500 text-sm">Comprehensive understanding of addition, subtraction, and
+                                multiplication.</p>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900 mb-6">Course Syllabus</h3>
+                <div class="space-y-4">
+                    <div class="p-6 border border-slate-100 rounded-2xl hover:border-primary-blue transition-colors">
+                        <h5 class="font-bold text-slate-800">Module 1: Numbers to 100,000 & Fractions</h5>
+                        <p class="text-sm text-slate-500 mt-2">Mastering large numbers and representing parts of a whole
+                            visually.</p>
+                    </div>
+                    <div class="p-6 border border-slate-100 rounded-2xl hover:border-primary-blue transition-colors">
+                        <h5 class="font-bold text-slate-800">Module 2: Geometry & Decimals</h5>
+                        <p class="text-sm text-slate-500 mt-2">Angles, triangles, and transitioning fractions to decimal
+                            points.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: FAQs -->
+            <div id="faqs" class="tab-pane hidden bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
+                <h2 class="text-3xl font-bold text-slate-900 mb-8">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div class="faq-item border border-slate-100 rounded-2xl p-6 bg-slate-50">
+                        <input type="checkbox" id="faq1" class="hidden">
+                        <label for="faq1"
+                            class="flex justify-between items-center font-bold cursor-pointer text-slate-800">
+                            Is this course suitable for Grade 4?
+                            <i data-lucide="chevron-down" class="transition-transform"></i>
+                        </label>
+                        <div
+                            class="faq-content max-h-0 overflow-hidden text-slate-600 text-sm transition-all duration-300">
+                            Yes, the course starts with Grade 4 fundamental building blocks and progressively moves to
+                            Grade 6 concepts over 12 months.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Pricing -->
+            <div id="pricing" class="tab-pane hidden">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Basic -->
+                    <div
+                        class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 hover:scale-105 transition-transform duration-300 text-center">
+                        <h3 class="font-bold text-slate-400 text-sm uppercase mb-4">Standard Batch</h3>
+                        <div class="mb-8">
+                            <span class="text-4xl font-extrabold text-slate-900">$149</span>
+                            <span class="text-slate-500">/ lifetime access</span>
+                        </div>
+                        <ul class="space-y-4 mb-10 text-sm text-slate-600">
+                            <li class="flex items-center gap-2 justify-center"><i data-lucide="check"
+                                    class="text-green-500 w-4 h-4"></i> Live Group Sessions</li>
+                            <li class="flex items-center gap-2 justify-center"><i data-lucide="check"
+                                    class="text-green-500 w-4 h-4"></i> Study Materials (PDF)</li>
+                        </ul>
+                        <button onclick="openModal()"
+                            class="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-slate-800 transition">Buy
+                            Standard</button>
+                    </div>
+                    <!-- Pro -->
+                    <div
+                        class="bg-slate-900 p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden border-2 border-primary-blue hover:scale-110 transition-transform duration-300 text-center text-white">
+                        <div class="absolute top-4 right-4 bg-primary-blue text-xs font-bold px-3 py-1 rounded-full">
+                            POPULAR</div>
+                        <h3 class="font-bold text-slate-500 text-sm uppercase mb-4">Elite Mentorship</h3>
+                        <div class="mb-8">
+                            <span class="text-4xl font-extrabold">$399</span>
+                            <span class="text-slate-400">/ 1-on-1 focus</span>
+                        </div>
+                        <ul class="space-y-4 mb-10 text-sm text-slate-300">
+                            <li class="flex items-center gap-2 justify-center"><i data-lucide="check"
+                                    class="text-primary-blue w-4 h-4"></i> Weekly 1-on-1 Feedback</li>
+                            <li class="flex items-center gap-2 justify-center"><i data-lucide="check"
+                                    class="text-primary-blue w-4 h-4"></i> Mock Exams Included</li>
+                        </ul>
+                        <button onclick="openModal()"
+                            class="w-full bg-primary-blue text-white py-4 rounded-2xl font-bold hover:shadow-xl transition">Select
+                            Elite</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Reviews -->
+            <div id="reviews" class="tab-pane hidden bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
+                <h2 class="text-3xl font-bold text-slate-900 mb-8">What Students Think</h2>
+                <div class="space-y-8">
+                    <div class="border-b border-slate-100 pb-8">
+                        <div class="flex items-center gap-2 mb-4 text-yellow-400"><i data-lucide="star"
+                                class="fill-current w-4 h-4"></i><i data-lucide="star"
+                                class="fill-current w-4 h-4"></i><i data-lucide="star"
+                                class="fill-current w-4 h-4"></i><i data-lucide="star"
+                                class="fill-current w-4 h-4"></i><i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        </div>
+                        <p class="italic text-slate-600">"This course made math fun for the first time in my life. The
+                            blocks and bar models are life-savers!"</p>
+                        <p class="mt-4 font-bold text-slate-800 text-sm">— Aisha K. (Grade 5)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Services (Carousel) -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12">Related Services</h2>
+            <div class="carousel-container overflow-visible">
+                <div class="flex gap-8 overflow-x-auto pb-8 no-scrollbar scroll-smooth">
+                    <!-- Related 1 -->
+                    <a href="service-details.html"
+                        class="min-w-[300px] bg-slate-50 p-6 rounded-3xl border border-slate-100 hover:shadow-xl transition duration-500 shrink-0">
+                        <img src="../img/Lower Secondary (Grades 6-8).jpeg"
+                            class="h-40 w-full object-cover rounded-2xl mb-4">
+                        <h4 class="font-bold text-slate-900">Lower Secondary Mastery</h4>
+                        <p class="text-xs text-slate-500 mt-2">Next level progression for Grades 6-8 students.</p>
+                    </a>
+                    <!-- Related 2 -->
+                    <a href="service-details.html"
+                        class="min-w-[300px] bg-slate-50 p-6 rounded-3xl border border-slate-100 hover:shadow-xl transition duration-500 shrink-0">
+                        <img src="../img/Upper Secondary (Grades 9-10).jpeg"
+                            class="h-40 w-full object-cover rounded-2xl mb-4">
+                        <h4 class="font-bold text-slate-900">Olympiad Excellence</h4>
+                        <p class="text-xs text-slate-500 mt-2">Competitive training for math enthusiasts.</p>
+                    </a>
+                    <!-- Related 3 -->
+                    <a href="service-details.html"
+                        class="min-w-[300px] bg-slate-50 p-6 rounded-3xl border border-slate-100 hover:shadow-xl transition duration-500 shrink-0">
+                        <img src="../img/Instructor.jpeg" class="h-40 w-full object-cover rounded-2xl mb-4">
+                        <h4 class="font-bold text-slate-900">Mental Math Intensive</h4>
+                        <p class="text-xs text-slate-500 mt-2">Speed calculation techniques for all ages.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="bg-primary-blue text-white pt-20 pb-10 border-t border-blue-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1">
+                    <a href="../index.html" class="flex items-center gap-3 mb-6 group">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-primary-blue shadow-lg group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black text-white tracking-tight">Skillora</span>
+                    </a>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6">Revolutionizing modern education
+                        through
+                        precision, play, and practical mastery.</p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About
+                                Us</a>
+                        </li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a>
+                        </li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Support</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact
+                                Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact/Social -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Connect</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm mb-6">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <span>123 Innovation Dr, Tech City</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <a href="mailto:hello@skillora.com"
+                                class="hover:text-white transition">hello@skillora.com</a>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-blue-500 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-200 text-sm">
+                <p>&copy; 2026 Skillora. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

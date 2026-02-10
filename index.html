@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillora | Unlock Your Potential</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <!-- SEO Meta Tags -->
+
+
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="font-sans bg-white text-gray-800">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 glass shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="group flex items-center gap-3 no-underline">
+                <div
+                    class="w-10 h-10 bg-primary-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition duration-300">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-black text-slate-900 tracking-tight">Skillora</span>
+            </a>
+
+            <div class="hidden lg:flex space-x-8 text-slate-600 font-medium">
+                <a href="index.html" class="text-primary-blue">Home</a>
+                <a href="pages/about.html" class="hover:text-primary-blue transition">About Us</a>
+                <a href="pages/services.html" class="hover:text-primary-blue transition">Services</a>
+                <a href="pages/blog.html" class="hover:text-primary-blue transition">Blog</a>
+                <a href="pages/contact.html" class="hover:text-primary-blue transition">Contact Us</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="user-dropdown-container">
+                    <button id="user-menu-button"
+                        class="hidden sm:flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 text-gray-400 hover:text-primary-blue hover:border-primary-blue transition duration-300">
+                        <i data-lucide="user-circle" class="w-6 h-6"></i>
+                    </button>
+                    <div id="user-dropdown"
+                        class="hidden absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-[100]">
+                        <a href="pages/login.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Log
+                            In</a>
+                        <a href="pages/signup.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Sign
+                            Up</a>
+                    </div>
+                </div>
+                <a id="navbar-cta" href="#"
+                    class="hidden md:flex items-center justify-center btn-skillora btn-skillora-sm no-underline">
+                    Get Started
+                </a>
+                <button id="mobile-menu-button" class="lg:hidden text-primary-blue"><i data-lucide="menu"></i></button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="lg:hidden bg-white shadow-xl absolute w-full left-0 top-full overflow-hidden">
+            <a href="index.html" class="block py-3 px-8 text-primary-blue font-bold hover:bg-light-lavender">Home</a>
+            <a href="pages/about.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">About
+                Us</a>
+            <a href="pages/services.html"
+                class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Services</a>
+            <a href="pages/blog.html"
+                class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Blog</a>
+            <a href="pages/contact.html"
+                class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Contact Us</a>
+            <a href="pages/admin-dashboard.html"
+                class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Admin Dashboard</a>
+            <a href="pages/login.html"
+                class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Login</a>
+            <a href="pages/signup.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Sign
+                Up</a>
+            <button onclick="openModal()" class="w-full btn-skillora rounded-none py-4">Book Demo</button>
+        </div>
+    </header>
+
+    <section class="relative min-h-[90vh] flex items-center overflow-hidden bg-hero-gradient">
+        <!-- Simplified Background Treatment -->
+        <div class="absolute inset-0 bg-black/5"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-white py-20">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <!-- Hero Content -->
+                <div class="text-center lg:text-left mb-12 lg:mb-0" data-animate="fade-up">
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight mb-6 tracking-tight">
+                        Elevate Your Learning with <span class="text-white">Visual Logic</span>
+                    </h1>
+                    <p
+                        class="text-lg sm:text-xl opacity-90 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium text-blue-50">
+                        Empowering 50,000+ students to master complex concepts through an elite,
+                        interactive curriculum designed for the next generation of thinkers.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                        <button onclick="openModal()"
+                            class="btn-skillora btn-skillora-lg !shadow-2xl hover:scale-105 transition-transform">
+                            Start Learning Free <i data-lucide="arrow-right" class="w-5 h-5 ml-1"></i>
+                        </button>
+                        <a href="pages/services.html"
+                            class="inline-flex items-center justify-center bg-white/10 backdrop-blur-lg border-2 border-white/30 text-white font-bold py-4 px-10 rounded-full hover:bg-white/20 hover:border-white/50 transition-all duration-300">
+                            Explore Programs
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Visual -->
+                <div class="hidden lg:block relative" data-animate="fade-up">
+                    <div class="relative z-10">
+                        <div class="rounded-3xl overflow-hidden shadow-2xl">
+                            <img src="./img/Happy Student img.jpeg" alt="Skillora Student"
+                                class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Features Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-animate="fade-up">
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-primary-blue mb-4">Empower Your Educational Journey
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover why thousands of students trust Skillora to bridge
+                    the gap between curiosity and mastery through our dedicated learning ecosystem.</p>
+            </div>
+
+            <!-- Featured Services Section -->
+            <section class="py-24 bg-slate-50 border-t border-slate-100">
+                <div class="max-w-7xl mx-auto px-4">
+                    <div class="text-center mb-20" data-animate="fade-up">
+                        <span class="text-primary-blue font-bold uppercase tracking-widest text-sm">Why Choose
+                            Skillora?</span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mt-4 mb-6">Built for Educational
+                            Excellence</h2>
+                        <p class="text-slate-600 max-w-2xl mx-auto">We provide the tools, support, and flexibility you
+                            need to excel in today's fast-paced world.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Benefit 1 -->
+                        <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col items-center text-center group transition hover:-translate-y-2 cursor-pointer"
+                            data-animate="fade-up" onclick="window.location.href='pages/feature-expert-led.html'">
+                            <div
+                                class="w-20 h-20 bg-blue-50 text-primary-blue rounded-3xl flex items-center justify-center mb-8 group-hover:rotate-6 transition">
+                                <i data-lucide="graduation-cap" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Expert-Led Courses</h3>
+                            <p class="text-slate-500 text-sm mb-8 leading-relaxed">Learn from world-class instructors
+                                and industry veterans who bring years of practical experience to every lesson.</p>
+                            <a href="pages/feature-expert-led.html"
+                                class="text-primary-blue font-bold flex items-center gap-2"
+                                onclick="event.stopPropagation()">Learn More <i data-lucide="arrow-right"
+                                    class="w-4 h-4"></i></a>
+                        </div>
+
+                        <!-- Benefit 2 -->
+                        <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col items-center text-center group transition hover:-translate-y-2 cursor-pointer"
+                            data-animate="fade-up" onclick="window.location.href='pages/feature-structured-paths.html'">
+                            <div
+                                class="w-20 h-20 bg-blue-50 text-primary-blue rounded-3xl flex items-center justify-center mb-8 group-hover:-rotate-6 transition">
+                                <i data-lucide="layers" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Structured Paths</h3>
+                            <p class="text-slate-500 text-sm mb-8 leading-relaxed">Master complex subjects with
+                                step-by-step curriculums designed to build a rock-solid foundation for future success.
+                            </p>
+                            <a href="pages/feature-structured-paths.html"
+                                class="text-primary-blue font-bold flex items-center gap-2"
+                                onclick="event.stopPropagation()">Learn More <i data-lucide="arrow-right"
+                                    class="w-4 h-4"></i></a>
+                        </div>
+
+                        <!-- Benefit 3 -->
+                        <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col items-center text-center group transition hover:-translate-y-2 cursor-pointer"
+                            data-animate="fade-up"
+                            onclick="window.location.href='pages/feature-practical-projects.html'">
+                            <div
+                                class="w-20 h-20 bg-indigo-50 text-indigo-500 rounded-3xl flex items-center justify-center mb-8 group-hover:rotate-12 transition">
+                                <i data-lucide="briefcase" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Practical Projects</h3>
+                            <p class="text-slate-500 text-sm mb-8 leading-relaxed">Bridge the gap between theory and
+                                practice with immersive projects that simulate real-world challenges and scenarios.</p>
+                            <a href="pages/feature-practical-projects.html"
+                                class="text-primary-blue font-bold flex items-center gap-2"
+                                onclick="event.stopPropagation()">Learn More <i data-lucide="arrow-right"
+                                    class="w-4 h-4"></i></a>
+                        </div>
+
+                        <!-- Benefit 4 -->
+                        <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col items-center text-center group transition hover:-translate-y-2 cursor-pointer"
+                            data-animate="fade-up" onclick="window.location.href='pages/feature-certifications.html'">
+                            <div
+                                class="w-20 h-20 bg-blue-50 text-primary-blue rounded-3xl flex items-center justify-center mb-8 group-hover:-rotate-6 transition">
+                                <i data-lucide="award" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Certifications</h3>
+                            <p class="text-slate-500 text-sm mb-8 leading-relaxed">Validate your expertise with digital
+                                certificates that showcase your achievements to future employers and institutions.</p>
+                            <a href="pages/feature-certifications.html"
+                                class="text-primary-blue font-bold flex items-center gap-2"
+                                onclick="event.stopPropagation()">Learn More <i data-lucide="arrow-right"
+                                    class="w-4 h-4"></i></a>
+                        </div>
+
+                        <!-- Benefit 5 -->
+                        <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col items-center text-center group transition hover:-translate-y-2 cursor-pointer"
+                            data-animate="fade-up"
+                            onclick="window.location.href='pages/feature-flexible-schedules.html'">
+                            <div
+                                class="w-20 h-20 bg-blue-50 text-primary-blue rounded-3xl flex items-center justify-center mb-8 group-hover:rotate-6 transition">
+                                <i data-lucide="calendar" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Flexible Schedules</h3>
+                            <p class="text-slate-500 text-sm mb-8 leading-relaxed">Learn at your own pace with a mix of
+                                live sessions and on-demand content designed to fit into your busy lifestyle.</p>
+                            <a href="pages/feature-flexible-schedules.html"
+                                class="text-primary-blue font-bold flex items-center gap-2"
+                                onclick="event.stopPropagation()">Learn More <i data-lucide="arrow-right"
+                                    class="w-4 h-4"></i></a>
+                        </div>
+
+                        <!-- Benefit 6 -->
+                        <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col items-center text-center group transition hover:-translate-y-2 cursor-pointer"
+                            data-animate="fade-up" onclick="window.location.href='pages/feature-mentor-support.html'">
+                            <div
+                                class="w-20 h-20 bg-blue-50 text-primary-blue rounded-3xl flex items-center justify-center mb-8 group-hover:-rotate-6 transition">
+                                <i data-lucide="users" class="w-10 h-10"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4">Mentor Support</h3>
+                            <p class="text-slate-500 text-sm mb-8 leading-relaxed">Never learn alone—gain direct access
+                                to dedicated mentors and join a vibrant community of fellow learners.</p>
+                            <a href="pages/feature-mentor-support.html"
+                                class="text-primary-blue font-bold flex items-center gap-2"
+                                onclick="event.stopPropagation()">Learn More <i data-lucide="arrow-right"
+                                    class="w-4 h-4"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
+
+    <!-- Tailored Education Section -->
+    <section class="py-16 bg-slate-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                <!-- Left Content -->
+                <div data-animate="fade-up" class="space-y-8">
+                    <div>
+                        <h2 class="text-3xl sm:text-5xl font-black text-slate-900 mb-6 leading-tight">
+                            Tailored Education for <br><span class="text-primary-blue">Every Criterion.</span>
+                        </h2>
+                        <p class="text-slate-500 text-lg leading-relaxed max-w-lg">
+                            We understand that every learner is unique. That's why our platform adjusts to your pace,
+                            preferences, and goals with precision and ease.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Feature 1 -->
+                        <div class="flex items-start gap-4 group cursor-pointer hover:bg-white/50 p-4 rounded-2xl transition-all"
+                            onclick="window.location.href='pages/feature-smart-filtering.html'">
+                            <div
+                                class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary-blue shadow-sm border border-slate-100 shrink-0 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="filter" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary-blue transition-colors">
+                                    Smart Filtering</h4>
+                                <p class="text-slate-500 leading-relaxed">Find exactly what you need with advanced
+                                    search
+                                    filters that sort by topic, difficulty, and learning style.</p>
+                            </div>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="flex items-start gap-4 group cursor-pointer hover:bg-white/50 p-4 rounded-2xl transition-all"
+                            onclick="window.location.href='pages/feature-flexible-schedules.html'">
+                            <div
+                                class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary-blue shadow-sm border border-slate-100 shrink-0 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="calendar-clock" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary-blue transition-colors">
+                                    Flexible Scheduling</h4>
+                                <p class="text-slate-500 leading-relaxed">Learn at your own pace with on-demand video
+                                    lessons and live sessions that fit your busy calendar.</p>
+                            </div>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="flex items-start gap-4 group cursor-pointer hover:bg-white/50 p-4 rounded-2xl transition-all"
+                            onclick="window.location.href='pages/feature-outcome-driven.html'">
+                            <div
+                                class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary-blue shadow-sm border border-slate-100 shrink-0 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="trending-up" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4
+                                    class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary-blue transition-colors">
+                                    Outcome Driven</h4>
+                                <p class="text-slate-500 leading-relaxed">Focus on practical skills and verifiable
+                                    outcomes that directly translate to academic and career success.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual -->
+                <div class="relative lg:pl-8 flex flex-col gap-8" data-animate="fade-up">
+                    <!-- Decorative BG -->
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-50/50 rounded-full blur-3xl -z-10">
+                    </div>
+
+                    <!-- Card 1: Visual Calculus -->
+                    <div onclick="window.location.href='pages/course-visual-calculus.html'"
+                        class="bg-white p-6 rounded-[2.5rem] shadow-xl border border-slate-100 relative z-10 transform hover:scale-105 transition duration-500 w-full max-w-md mx-auto cursor-pointer">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-2xl overflow-hidden shrink-0">
+                                <img src="img/Upper Primary (Grades 4-6).jpeg" alt="Calculus"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-black text-slate-900">Visual Calculus</h4>
+                                <span class="text-sm font-bold text-slate-500">Mathematics • Advanced</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-sm font-bold text-slate-600">
+                                <span>Progress</span>
+                                <span class="text-primary-blue">75%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div
+                                    class="h-full bg-primary-blue w-[75%] rounded-full shadow-[0_0_10px_rgba(44,123,229,0.5)]">
+                                </div>
+                            </div>
+                            <div
+                                class="flex justify-between text-xs font-bold text-slate-400 pt-2 border-t border-slate-50 mt-4">
+                                <div class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 4h
+                                    30m
+                                </div>
+                                <div class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i>
+                                    1.2k
+                                    Enrolled</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: System Design -->
+                    <div onclick="window.location.href='pages/course-system-design.html'"
+                        class="bg-white p-6 rounded-[2.5rem] shadow-xl border border-slate-100 relative z-20 transform hover:-translate-y-2 transition duration-500 w-full max-w-md mx-auto shadow-indigo-500/10 cursor-pointer">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-blue-100 rounded-2xl overflow-hidden shrink-0">
+                                <img src="img/Why choose us.jpeg" alt="System Design"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-black text-slate-900">System Design</h4>
+                                <span class="text-sm font-bold text-slate-500">Computer Science • Intermediate</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between text-sm font-bold text-slate-600">
+                                <span>Progress</span>
+                                <span class="text-primary-blue">45%</span>
+                            </div>
+                            <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div
+                                    class="h-full bg-primary-blue w-[45%] rounded-full shadow-[0_0_10px_rgba(44,123,229,0.5)]">
+                                </div>
+                            </div>
+                            <div
+                                class="flex justify-between text-xs font-bold text-slate-400 pt-2 border-t border-slate-50 mt-4">
+                                <div class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 8h
+                                    15m
+                                </div>
+                                <div class="flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5"></i> 850
+                                    Enrolled</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Access Section -->
+    <section class="py-12 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate="fade-up">
+            <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Admin Access</h3>
+            <a href="pages/admin-dashboard.html"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-700 font-bold rounded-xl border border-slate-200 hover:border-primary-blue hover:text-primary-blue transition-all shadow-sm hover:shadow-md no-underline">
+                <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                Open Admin Dashboard
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-blue text-white pt-20 pb-10 border-t border-blue-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1">
+                    <a href="index.html" class="flex items-center gap-3 mb-6 group">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-primary-blue shadow-lg group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black text-white tracking-tight">Skillora</span>
+                    </a>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6">Revolutionizing modern education
+                        through
+                        precision, play, and practical mastery.</p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="pages/about.html" class="hover:text-white transition-colors">About
+                                Us</a>
+                        </li>
+                        <li><a href="pages/services.html" class="hover:text-white transition-colors">Services</a>
+                        </li>
+                        <li><a href="pages/blog.html" class="hover:text-white transition-colors">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Support</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="pages/contact.html" class="hover:text-white transition-colors">Contact
+                                Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact/Social -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Connect</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm mb-6">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <span>123 Innovation Dr, Tech City</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <a href="mailto:hello@skillora.com"
+                                class="hover:text-white transition">hello@skillora.com</a>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-blue-500 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-200 text-sm">
+                <p>&copy; 2026 Skillora. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Modal -->
+    <div id="demoModal"
+        class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[100] transition-opacity duration-300 opacity-0">
+        <div
+            class="modal-content bg-white p-10 rounded-[2rem] max-w-lg w-full m-4 shadow-2xl relative transition-transform duration-300 transform scale-95">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-800">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h3 class="text-3xl font-bold text-primary-blue mb-4">Book Your Free Trial</h3>
+            <form data-validate class="space-y-4">
+                <input type="text" required placeholder="Name"
+                    class="w-full px-5 py-3 border rounded-xl outline-none focus:ring-2 ring-primary-blue/20">
+                <input type="email" required placeholder="Email"
+                    class="w-full px-5 py-3 border rounded-xl outline-none focus:ring-2 ring-primary-blue/20">
+                <button type="submit" class="w-full btn-skillora py-4 rounded-xl">Submit</button>
+                <div class="success-msg hidden text-center font-bold text-green-600">Success! We'll call you.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

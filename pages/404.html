@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page on a Field Trip | Skillora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .bg-404-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-404-pattern font-sans text-slate-800 min-h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
+
+    <!-- Decorative Elements -->
+    <div class="absolute top-10 left-10 opacity-10 animate-float" style="animation-delay: 0s;">
+        <i data-lucide="calculator" class="w-20 h-20 text-primary-blue"></i>
+    </div>
+    <div class="absolute bottom-10 right-10 opacity-10 animate-float" style="animation-delay: 1s;">
+        <i data-lucide="triangle" class="w-16 h-16 text-secondary-pink rotate-45"></i>
+    </div>
+    <div class="absolute top-20 right-20 opacity-10 animate-float" style="animation-delay: 2s;">
+        <i data-lucide="book-marked" class="w-12 h-12 text-indigo-400 -rotate-12"></i>
+    </div>
+
+    <div class="max-w-3xl w-full text-center relative z-10" data-animate="fade-up">
+        <!-- 404 Illustration -->
+        <div class="mb-12 relative flex justify-center">
+            <div class="absolute -inset-4 bg-primary-blue/5 rounded-full blur-3xl animate-pulse"></div>
+            <img src="C:/Users/dines/.gemini/antigravity/brain/45ea35d5-1e38-41e9-ba89-909994f98491/playful_404_math_lost_1769598171397.png"
+                alt="404 Illustration" class="w-full max-w-md relative z-10 drop-shadow-2xl rounded-3xl animate-float">
+        </div>
+
+        <!-- Text Content -->
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
+            Oops! This page went on a <br><span class="text-gradient">field trip</span>.
+        </h1>
+        <p class="text-lg text-slate-500 mb-10 max-w-xl mx-auto">
+            It seems the resource you're looking for has wandered off the curriculum.
+            Don't worry, let's help you solve this mystery!
+        </p>
+
+        <!-- Search Bar -->
+        <div class="max-w-md mx-auto mb-10 relative">
+            <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5"></i>
+            <input type="text" placeholder="Search for courses, blog posts, etc..."
+                class="w-full pl-12 pr-4 py-4 bg-white border border-slate-200 rounded-2xl shadow-sm outline-none focus:ring-4 ring-primary-blue/10 transition duration-300">
+        </div>
+
+        <!-- Call to Actions -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="../index.html" class="w-full sm:w-auto btn-skillora !rounded-2xl">
+                <i data-lucide="home" class="w-5 h-5"></i> Back to Homepage
+            </a>
+            <a href="contact.html"
+                class="w-full sm:w-auto bg-white border border-slate-200 text-slate-700 font-bold py-4 px-10 rounded-2xl hover:bg-slate-50 transition duration-300 flex items-center justify-center gap-2">
+                <i data-lucide="mail" class="w-5 h-5"></i> Contact Support
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer-esque note -->
+    <p class="mt-16 text-sm text-slate-400 font-medium">
+        Error Code: <span class="text-primary-blue">X-404-LOST-LOGIC</span>
+    </p>
+
+    <script src="../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

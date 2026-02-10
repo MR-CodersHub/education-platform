@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Skillora</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="font-sans bg-slate-50 text-slate-800">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 glass shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex lg:hidden items-center justify-center w-10 h-10 bg-blue-50 text-primary-blue rounded-xl transition-all hover:bg-blue-100 mr-2">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </a>
+            <a href="../index.html" class="group flex items-center gap-3 no-underline">
+                <div
+                    class="w-10 h-10 bg-primary-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition duration-300">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-black text-slate-900 tracking-tight">Skillora</span>
+            </a>
+
+            <div class="hidden lg:flex space-x-8 text-slate-600 font-medium">
+                <a href="../index.html" class="hover:text-primary-blue transition">Home</a>
+                <a href="about.html" class="hover:text-primary-blue transition">About Us</a>
+                <a href="services.html" class="hover:text-primary-blue transition">Services</a>
+                <a href="blog.html" class="hover:text-primary-blue transition">Blog</a>
+                <a href="contact.html" class="text-primary-blue">Contact Us</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="user-dropdown-container">
+                    <button id="user-menu-button"
+                        class="hidden sm:flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 text-gray-400 hover:text-primary-blue hover:border-primary-blue transition duration-300">
+                        <i data-lucide="user-circle" class="w-6 h-6"></i>
+                    </button>
+                    <div id="user-dropdown"
+                        class="hidden absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-[100]">
+                        <a href="login.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Log
+                            In</a>
+                        <a href="signup.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Sign
+                            Up</a>
+                    </div>
+                </div>
+                <a id="navbar-cta" href="#"
+                    class="hidden md:flex items-center justify-center btn-skillora btn-skillora-sm no-underline">
+                    Help Center
+                </a>
+                <button id="mobile-menu-button" class="lg:hidden text-primary-blue"><i data-lucide="menu"></i></button>
+            </div>
+            <div id="mobile-menu" class="lg:hidden bg-white shadow-xl absolute w-full left-0 top-full overflow-hidden">
+            <a href="../index.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Home</a>
+            <a href="about.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">About Us</a>
+            <a href="services.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Services</a>
+            <a href="blog.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Blog</a>
+            <a href="contact.html" class="block py-3 px-8 text-primary-blue font-bold hover:bg-light-lavender">Contact Us</a>
+            <a href="admin-dashboard.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Admin Dashboard</a>
+            <a href="login.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Login</a>
+            <a href="signup.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Sign Up</a>
+            <button onclick="openModal()" class="w-full btn-skillora rounded-none py-4">Book Demo</button>
+        </div>
+    </header>
+
+    <!-- Main Contact Section -->
+    <section class="py-20 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+                <!-- Left: Contact Form -->
+                <div data-animate="fade-up"
+                    class="bg-white p-10 lg:p-16 rounded-[3rem] shadow-2xl border border-slate-100">
+                    <h1 class="text-4xl font-extrabold text-slate-900 mb-4 leading-tight">Send us a <br><span
+                            class="text-gradient">Message</span></h1>
+                    <p class="text-slate-500 mb-12">Whether you have a question about courses or business inquiries,
+                        we're ready to help.</p>
+
+                    <form id="contact-form" data-validate class="space-y-4">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="floating-label-group">
+                                <input type="text" id="first_name" placeholder=" " required>
+                                <label for="first_name">First Name</label>
+                            </div>
+                            <div class="floating-label-group">
+                                <input type="text" id="last_name" placeholder=" " required>
+                                <label for="last_name">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="floating-label-group">
+                            <input type="email" id="email" placeholder=" " required>
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div class="floating-label-group">
+                            <select id="subject" class="appearance-none" required>
+                                <option value="" disabled selected hidden></option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="billing">Billing</option>
+                                <option value="partnership">Partnership</option>
+                            </select>
+                            <label for="subject">How can we help?</label>
+                        </div>
+                        <div class="floating-label-group">
+                            <textarea id="message" rows="4" placeholder=" " required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="w-full btn-skillora py-5 !rounded-2xl">
+                            Submit Inquiry
+                        </button>
+                        <div
+                            class="success-msg hidden p-6 bg-green-50 text-green-700 rounded-2xl text-center font-bold">
+                            Success! Our team will reach out within 24 hours.
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right: Map + Details -->
+                <div class="space-y-12" data-animate="fade-up">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-8">Reach out directly</h2>
+                        <div class="grid sm:grid-cols-2 gap-8">
+                            <div class="group">
+                                <div
+                                    class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary-blue shadow-sm border border-slate-100 group-hover:bg-primary-blue group-hover:text-white transition-all duration-300 mb-4">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mb-1">Email Support</h4>
+                                <p class="text-sm text-slate-500">hello@skillora.edu</p>
+                            </div>
+                            <div class="group">
+                                <div
+                                    class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-secondary-pink shadow-sm border border-slate-100 group-hover:bg-secondary-pink group-hover:text-white transition-all duration-300 mb-4">
+                                    <i data-lucide="phone"></i>
+                                </div>
+                                <h4 class="font-bold text-slate-900 mb-1">Call Us</h4>
+                                <p class="text-sm text-slate-500">+1 (555) 987-6543</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Container -->
+                    <div
+                        class="map-container relative h-96 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white group">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153166!3d-37.81627974202148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce6e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1611554161745!5m2!1sen!2sus"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            class="map-filter transition-all duration-1000">
+                        </iframe>
+                        <div
+                            class="absolute inset-0 bg-primary-blue/5 pointer-events-none group-hover:bg-transparent transition-all duration-1000">
+                        </div>
+                        <div
+                            class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl flex items-center gap-4 border border-white">
+                            <div
+                                class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Global HQ</p>
+                                <p class="text-sm font-bold text-slate-900">Education Way, STEAM District</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-8 bg-indigo-600 rounded-[2.5rem] text-white">
+                        <h4 class="text-xl font-bold mb-4">Are you a teacher?</h4>
+                        <p class="opacity-80 text-sm mb-6">Join our growing community of educators and get exclusive
+                            access to specialized curriculum tools.</p>
+                        <a href="#" class="inline-flex items-center gap-2 font-bold hover:underline">Apply as Instructor
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-blue text-white pt-20 pb-10 border-t border-blue-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1">
+                    <a href="../index.html" class="flex items-center gap-3 mb-6 group">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-primary-blue shadow-lg group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black text-white tracking-tight">Skillora</span>
+                    </a>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6">Revolutionizing modern education
+                        through
+                        precision, play, and practical mastery.</p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About
+                                Us</a>
+                        </li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a>
+                        </li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Support</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact
+                                Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact/Social -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Connect</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm mb-6">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <span>123 Innovation Dr, Tech City</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <a href="mailto:hello@skillora.com"
+                                class="hover:text-white transition">hello@skillora.com</a>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-blue-500 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-200 text-sm">
+                <p>&copy; 2026 Skillora. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

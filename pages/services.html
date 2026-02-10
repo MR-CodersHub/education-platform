@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Courses | Skillora</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .course-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .course-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px -12px rgba(44, 123, 229, 0.15);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(44, 123, 229, 0.3);
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-[#F8FAFC] text-slate-800">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 glass shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex lg:hidden items-center justify-center w-10 h-10 bg-blue-50 text-primary-blue rounded-xl transition-all hover:bg-blue-100 mr-2">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </a>
+            <a href="../index.html" class="group flex items-center gap-3 no-underline">
+                <div
+                    class="w-10 h-10 bg-primary-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition duration-300">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-black text-slate-900 tracking-tight">Skillora</span>
+            </a>
+
+            <div class="hidden lg:flex space-x-8 text-slate-600 font-medium">
+                <a href="../index.html" class="hover:text-primary-blue transition">Home</a>
+                <a href="about.html" class="hover:text-primary-blue transition">About Us</a>
+                <a href="services.html" class="text-primary-blue">Services</a>
+                <a href="blog.html" class="hover:text-primary-blue transition">Blog</a>
+                <a href="contact.html" class="hover:text-primary-blue transition">Contact Us</a>
+                </div>
+
+            <div class="flex items-center gap-4">
+                <div class="user-dropdown-container">
+                    <button id="user-menu-button"
+                        class="hidden sm:flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 text-gray-400 hover:text-primary-blue hover:border-primary-blue transition duration-300">
+                        <i data-lucide="user-circle" class="w-6 h-6"></i>
+                    </button>
+                    <div id="user-dropdown"
+                        class="hidden absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-[100]">
+                        <a href="login.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Log
+                            In</a>
+                        <a href="signup.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Sign
+                            Up</a>
+                    </div>
+                </div>
+                <a id="navbar-cta" href="#"
+                    class="hidden md:flex items-center justify-center btn-skillora btn-skillora-sm no-underline">
+                    Start Learning
+                </a>
+                <button id="mobile-menu-button" class="lg:hidden text-primary-blue"><i data-lucide="menu"></i></button>
+            </div>
+            <div id="mobile-menu" class="lg:hidden bg-white shadow-xl absolute w-full left-0 top-full overflow-hidden">
+            <a href="../index.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Home</a>
+            <a href="about.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">About Us</a>
+            <a href="services.html" class="block py-3 px-8 text-primary-blue font-bold hover:bg-light-lavender">Services</a>
+            <a href="blog.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Blog</a>
+            <a href="contact.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Contact Us</a>
+            <a href="admin-dashboard.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Admin Dashboard</a>
+            <a href="login.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Login</a>
+            <a href="signup.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Sign Up</a>
+            <button onclick="openModal()" class="w-full btn-skillora rounded-none py-4">Book Demo</button>
+        </div>
+    </header>
+
+    <!-- Services Hero -->
+    <section class="py-20 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <span class="text-primary-blue font-bold uppercase tracking-widest text-sm"
+                data-animate="fade-up">Educational Excellence</span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 mt-4 mb-6 leading-tight"
+                data-animate="fade-up">Explore Our <span class="text-gradient">Services</span></h1>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto" data-animate="fade-up">We provide comprehensive
+                educational solutions designed to scale with your learning journey, from fundamental mastery to
+                specialized excellence.</p>
+        </div>
+    </section>
+
+    <!-- Core Services Grid -->
+    <section id="services-section" class="py-24">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">What We Offer</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm group hover:border-primary-blue transition-all"
+                    data-animate="fade-up">
+                    <div
+                        class="w-16 h-16 bg-blue-50 text-primary-blue rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition">
+                        <i data-lucide="monitor" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Online Live Classes</h3>
+                    <p class="text-slate-600 mb-8 leading-relaxed">Join interactive sessions with world-class
+                        instructors. Real-time feedback and dynamic visual learning tools.</p>
+                    <a href="service-details.html"
+                        class="text-primary-blue font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Learn
+                        More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm group hover:border-primary-blue transition-all"
+                    data-animate="fade-up">
+                    <div
+                        class="w-16 h-16 bg-blue-50 text-primary-blue rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition">
+                        <i data-lucide="layers" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Personalized Mentorship</h3>
+                    <p class="text-slate-600 mb-8 leading-relaxed">One-on-one sessions tailored to your pace. We
+                        identify roadblocks and build confidence where you need it most.</p>
+                    <a href="service-details.html"
+                        class="text-primary-blue font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Learn
+                        More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm group hover:border-primary-blue transition-all"
+                    data-animate="fade-up">
+                    <div
+                        class="w-16 h-16 bg-blue-50 text-primary-blue rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition">
+                        <i data-lucide="award" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Competiton Coaching</h3>
+                    <p class="text-slate-600 mb-8 leading-relaxed">Specialized training for math Olympiads, competitive
+                        exams, and international certification programs.</p>
+                    <a href="service-details.html"
+                        class="text-primary-blue font-bold flex items-center gap-2 group-hover:gap-4 transition-all">Learn
+                        More <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Catalog with Filter -->
+    <section class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-animate="fade-up">
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Education Catalog</h2>
+                <p class="text-slate-500">Find the perfect program based on your criteria.</p>
+            </div>
+
+            <!-- Search & Filters -->
+            <div class="max-w-4xl mx-auto mb-16 space-y-8">
+                <div class="relative group" data-animate="fade-up">
+                    <i data-lucide="search"
+                        class="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5 group-focus-within:text-primary-blue transition"></i>
+                    <input type="text" id="course-search" placeholder="Search by course name, topic, or prerequisite..."
+                        class="w-full pl-16 pr-8 py-5 bg-white border border-slate-200 rounded-[2rem] shadow-sm outline-none focus:ring-4 ring-primary-blue/5 transition text-lg">
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4" data-animate="fade-up">
+                    <button class="course-filter-btn btn-skillora btn-skillora-sm active" data-filter="all">All
+                        Levels</button>
+                    <button
+                        class="course-filter-btn px-8 py-3 bg-white text-slate-600 rounded-full font-bold border border-slate-100 shadow-sm transition hover:bg-slate-50"
+                        data-filter="beginner">Beginner</button>
+                    <button
+                        class="course-filter-btn px-8 py-3 bg-white text-slate-600 rounded-full font-bold border border-slate-100 shadow-sm transition hover:bg-slate-50"
+                        data-filter="intermediate">Intermediate</button>
+                    <button
+                        class="course-filter-btn px-8 py-3 bg-white text-slate-600 rounded-full font-bold border border-slate-100 shadow-sm transition hover:bg-slate-50"
+                        data-filter="advanced">Advanced</button>
+                    <button
+                        class="course-filter-btn px-8 py-3 bg-white text-slate-600 rounded-full font-bold border border-slate-100 shadow-sm transition hover:bg-slate-50"
+                        data-filter="premium">Olympiad</button>
+                </div>
+            </div>
+
+            <!-- Courses Grid -->
+            <div id="course-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course Card 1 -->
+                <a href="course-visual-calculus.html"
+                    class="course-card bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm block transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer"
+                    data-category="foundational" data-level="beginner" data-animate="fade-up">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 p-8 flex items-end">
+                        <span
+                            class="bg-white/20 backdrop-blur-md text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Beginner
+                            Friendly</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Visual Calculus 101</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">Understand the core concepts of limits,
+                            derivatives, and integrals through 3D interactive models.</p>
+
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-400 font-medium">Duration:</span>
+                                <span class="font-bold text-slate-700">12 Weeks</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-400 font-medium">Fee:</span>
+                                <span class="font-bold text-primary-blue">$249</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-400 font-medium">Eligibility:</span>
+                                <span class="font-bold text-slate-700">Grade 8+</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Prerequisites: Basic Algebra</span>
+                            <div class="text-primary-blue"><i data-lucide="arrow-right" class="w-5 h-5"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Course Card 2 -->
+                <a href="course-algebraic-excellence.html"
+                    class="course-card bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm block transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer"
+                    data-category="foundational" data-level="intermediate" data-animate="fade-up">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 p-8 flex items-end">
+                        <span
+                            class="bg-white/20 backdrop-blur-md text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Fast
+                            Track</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Algebraic Excellence</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">Master high-level algebraic equations and
+                            logic puzzles used in modern computing and AI.</p>
+
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-400 font-medium">Duration:</span>
+                                <span class="font-bold text-slate-700">8 Weeks</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-400 font-medium">Fee:</span>
+                                <span class="font-bold text-primary-blue">$199</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-400 font-medium">Eligibility:</span>
+                                <span class="font-bold text-slate-700">Grade 10+</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Prerequisites: Geometry</span>
+                            <div class="text-primary-blue"><i data-lucide="arrow-right" class="w-5 h-5"></i></div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Course Card 3 -->
+                <a href="course-legacy-olympiad.html"
+                    class="course-card bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm block transition-all duration-300 hover:-translate-y-2 hover:shadow-xl cursor-pointer"
+                    data-category="premium" data-level="premium" data-animate="fade-up">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 p-8 flex items-end">
+                        <span
+                            class="bg-white/20 backdrop-blur-md text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Olympiad
+                            Prep</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Legacy Olympiad</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">Extreme problem-solving training for
+                            international competitions and elite university entries.</p>
+
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-400 font-medium">Duration:</span>
+                                <span class="font-bold text-slate-700">20 Weeks</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-400 font-medium">Fee:</span>
+                                <span class="font-bold text-primary-blue">$499</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-400 font-medium">Eligibility:</span>
+                                <span class="font-bold text-slate-700">Top 1 percentile</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 border-t border-slate-50 flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-400 uppercase">Prerequisites: Calculus
+                                Advanced</span>
+                            <div class="text-primary-blue"><i data-lucide="arrow-right" class="w-5 h-5"></i></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="mt-20 text-center" data-animate="fade-up">
+                <button
+                    class="btn-skillora bg-white !text-slate-600 border-2 border-slate-200 hover:!bg-slate-50 !shadow-none">Load
+                    More Programs</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-blue text-white pt-20 pb-10 border-t border-blue-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1">
+                    <a href="../index.html" class="flex items-center gap-3 mb-6 group">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-primary-blue shadow-lg group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black text-white tracking-tight">Skillora</span>
+                    </a>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6">Revolutionizing modern education
+                        through
+                        precision, play, and practical mastery.</p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About
+                                Us</a>
+                        </li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a>
+                        </li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Support</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact
+                                Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact/Social -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Connect</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm mb-6">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <span>123 Innovation Dr, Tech City</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <a href="mailto:hello@skillora.com"
+                                class="hover:text-white transition">hello@skillora.com</a>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-blue-500 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-200 text-sm">
+                <p>&copy; 2026 Skillora. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Course Filter Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.course-filter-btn');
+            const courseCards = document.querySelectorAll('.course-card');
+            const courseGrid = document.getElementById('course-grid');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const filter = this.getAttribute('data-filter');
+
+                    // Update active button state
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'btn-skillora', 'btn-skillora-sm');
+                        btn.classList.add('px-8', 'py-3', 'bg-white', 'text-slate-600', 'rounded-full', 'font-bold', 'border', 'border-slate-100', 'shadow-sm', 'transition', 'hover:bg-slate-50');
+                    });
+                    this.classList.add('active', 'btn-skillora', 'btn-skillora-sm');
+                    this.classList.remove('px-8', 'py-3', 'bg-white', 'text-slate-600', 'border-slate-100', 'hover:bg-slate-50');
+
+                    // Filter cards with smooth animation
+                    courseCards.forEach(card => {
+                        const cardLevel = card.getAttribute('data-level');
+
+                        if (filter === 'all' || cardLevel === filter) {
+                            // Show card with fade-in and scale animation
+                            card.style.display = 'block';
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.9)';
+
+                            setTimeout(() => {
+                                card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            // Hide card with fade-out animation
+                            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.9)';
+
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            // Search functionality
+            const searchInput = document.getElementById('course-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', function () {
+                    const searchTerm = this.value.toLowerCase();
+
+                    courseCards.forEach(card => {
+                        const title = card.querySelector('h3').textContent.toLowerCase();
+                        const description = card.querySelector('p').textContent.toLowerCase();
+                        const prerequisites = card.querySelector('.text-xs').textContent.toLowerCase();
+
+                        if (title.includes(searchTerm) || description.includes(searchTerm) || prerequisites.includes(searchTerm)) {
+                            card.style.display = 'block';
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.9)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

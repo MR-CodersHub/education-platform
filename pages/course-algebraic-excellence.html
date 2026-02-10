@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebraic Excellence - Skillora</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="font-sans bg-[#F8FAFC] text-slate-800">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 glass shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex lg:hidden items-center justify-center w-10 h-10 bg-blue-50 text-primary-blue rounded-xl transition-all hover:bg-blue-100 mr-2">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </a>
+            <a href="../index.html" class="group flex items-center gap-3 no-underline">
+                <div
+                    class="w-10 h-10 bg-primary-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition duration-300">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-black text-slate-900 tracking-tight">Skillora</span>
+            </a>
+
+            <div class="hidden lg:flex space-x-8 text-slate-600 font-medium">
+                <a href="../index.html" class="hover:text-primary-blue transition">Home</a>
+                <a href="about.html" class="hover:text-primary-blue transition">About Us</a>
+                <a href="services.html" class="hover:text-primary-blue transition">Services</a>
+                <a href="blog.html" class="hover:text-primary-blue transition">Blog</a>
+                <a href="contact.html" class="hover:text-primary-blue transition">Contact Us</a>
+                </div>
+
+            <div class="flex items-center gap-4">
+                <a id="navbar-cta" href="signup.html"
+                    class="hidden md:flex items-center justify-center btn-skillora btn-skillora-sm no-underline">
+                    Get Started
+                </a>
+                <button id="mobile-menu-button" class="lg:hidden text-primary-blue"><i data-lucide="menu"></i></button>
+            </div>
+        </nav>
+    <div id="mobile-menu" class="lg:hidden bg-white shadow-xl absolute w-full left-0 top-full overflow-hidden">
+            <a href="../index.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Home</a>
+            <a href="about.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">About Us</a>
+            <a href="services.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Services</a>
+            <a href="blog.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Blog</a>
+            <a href="contact.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Contact Us</a>
+            <a href="admin-dashboard.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Admin Dashboard</a>
+            <a href="login.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Login</a>
+            <a href="signup.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Sign Up</a>
+            <button onclick="openModal()" class="w-full btn-skillora rounded-none py-4">Book Demo</button>
+        </div>
+    </header>
+
+    <!-- Course Hero Section -->
+    <section class="relative bg-gradient-to-br from-orange-500 to-red-600 text-white py-20 overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl">
+                <div class="flex items-center gap-3 mb-6">
+                    <span
+                        class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">Mathematics</span>
+                    <span
+                        class="bg-white/90 text-orange-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Intermediate</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight">Algebraic Excellence</h1>
+                <p class="text-xl opacity-90 mb-8 leading-relaxed">Master high-level algebraic equations and logic
+                    puzzles used in modern computing, AI, and advanced problem-solving.</p>
+
+                <div class="flex flex-wrap gap-6 mb-8">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="clock" class="w-5 h-5"></i>
+                        <span class="font-bold">8 Weeks</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="users" class="w-5 h-5"></i>
+                        <span class="font-bold">850+ Enrolled</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="star" class="w-5 h-5 fill-yellow-400 text-yellow-400"></i>
+                        <span class="font-bold">4.8/5 Rating</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="award" class="w-5 h-5"></i>
+                        <span class="font-bold">Certificate Included</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="window.location.href='signup.html'"
+                        class="btn-skillora btn-skillora-lg !bg-white !text-orange-600 hover:!bg-orange-50">
+                        Enroll Now <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                    </button>
+                    <button
+                        class="inline-flex items-center justify-center bg-white/10 backdrop-blur-lg border-2 border-white/30 text-white font-bold py-4 px-10 rounded-full hover:bg-white/20 transition-all">
+                        Preview Course
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Content -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- Main Content -->
+                <div class="lg:col-span-2">
+                    <!-- Overview -->
+                    <div class="mb-12">
+                        <h2 class="text-3xl font-black text-slate-900 mb-6">Course Overview</h2>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            Dive deep into the world of advanced algebra with this intensive 8-week program designed for
+                            students ready to tackle complex mathematical challenges. This course bridges theoretical
+                            algebra with practical applications in computer science, artificial intelligence, and
+                            competitive mathematics.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            You'll master polynomial equations, matrix operations, abstract algebra concepts, and
+                            develop the logical reasoning skills essential for success in STEM fields and competitive
+                            exams.
+                        </p>
+                    </div>
+
+                    <!-- What You'll Learn -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-black text-slate-900 mb-6">What You'll Learn</h3>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-6 h-6 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-slate-700">Advanced polynomial factorization techniques</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-6 h-6 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-slate-700">Matrix algebra and linear transformations</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-6 h-6 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-slate-700">Abstract algebra fundamentals (groups, rings)</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-6 h-6 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-slate-700">Logic puzzles and proof techniques</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-6 h-6 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-slate-700">Applications in cryptography and AI</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-6 h-6 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center shrink-0 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span class="text-slate-700">Competition-level problem solving</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Syllabus -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-black text-slate-900 mb-6">Course Syllabus</h3>
+                        <div class="space-y-4">
+                            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-bold text-slate-900">Week 1-2: Advanced Polynomials</h4>
+                                    <span
+                                        class="text-xs font-bold text-orange-600 bg-orange-50 px-3 py-1 rounded-full">2
+                                        Weeks</span>
+                                </div>
+                                <p class="text-sm text-slate-600">Complex factorization, synthetic division, and
+                                    polynomial theorems</p>
+                            </div>
+                            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-bold text-slate-900">Week 3-5: Matrix Algebra</h4>
+                                    <span
+                                        class="text-xs font-bold text-orange-600 bg-orange-50 px-3 py-1 rounded-full">3
+                                        Weeks</span>
+                                </div>
+                                <p class="text-sm text-slate-600">Matrix operations, determinants, eigenvalues, and
+                                    linear transformations</p>
+                            </div>
+                            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-bold text-slate-900">Week 6-7: Abstract Algebra</h4>
+                                    <span
+                                        class="text-xs font-bold text-orange-600 bg-orange-50 px-3 py-1 rounded-full">2
+                                        Weeks</span>
+                                </div>
+                                <p class="text-sm text-slate-600">Introduction to groups, rings, fields, and their
+                                    properties</p>
+                            </div>
+                            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-bold text-slate-900">Week 8: Applications & Competition Prep</h4>
+                                    <span
+                                        class="text-xs font-bold text-orange-600 bg-orange-50 px-3 py-1 rounded-full">1
+                                        Week</span>
+                                </div>
+                                <p class="text-sm text-slate-600">Real-world applications and competition-style problem
+                                    solving</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instructor -->
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-black text-slate-900 mb-6">Your Instructor</h3>
+                        <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                            <div class="flex items-start gap-6">
+                                <img src="https://i.pravatar.cc/150?u=instructor2" alt="Prof. Michael Zhang"
+                                    class="w-24 h-24 rounded-2xl border-4 border-white shadow-lg">
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-900 mb-1">Prof. Michael Zhang</h4>
+                                    <p class="text-sm text-orange-600 font-bold mb-3">Ph.D. in Applied Mathematics,
+                                        Stanford</p>
+                                    <p class="text-slate-600 leading-relaxed mb-4">
+                                        Professor Zhang is a renowned mathematician with expertise in abstract algebra
+                                        and its applications in computer science. He has coached multiple IMO gold
+                                        medalists.
+                                    </p>
+                                    <div class="flex items-center gap-4 text-sm text-slate-500">
+                                        <span class="flex items-center gap-1">
+                                            <i data-lucide="users" class="w-4 h-4"></i>
+                                            8,500+ Students
+                                        </span>
+                                        <span class="flex items-center gap-1">
+                                            <i data-lucide="star" class="w-4 h-4 fill-yellow-400 text-yellow-400"></i>
+                                            4.8 Rating
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="sticky top-24">
+                        <!-- Enrollment Card -->
+                        <div class="bg-white p-8 rounded-3xl shadow-xl border border-slate-100 mb-6">
+                            <div class="text-center mb-6">
+                                <div class="text-4xl font-black text-slate-900 mb-2">$199</div>
+                                <p class="text-sm text-slate-500">One-time payment</p>
+                            </div>
+                            <button onclick="window.location.href='signup.html'"
+                                class="w-full btn-skillora btn-skillora-lg mb-4">
+                                Enroll Now
+                            </button>
+                            <p class="text-xs text-center text-slate-500 mb-6">30-day money-back guarantee</p>
+
+                            <div class="space-y-3 pt-6 border-t border-slate-100">
+                                <div class="flex items-center gap-3 text-sm text-slate-700">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                                    <span>Lifetime access</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-slate-700">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                                    <span>Certificate of completion</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-slate-700">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                                    <span>24/7 instructor support</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-slate-700">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                                    <span>Interactive exercises</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-slate-700">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                                    <span>Mobile & desktop access</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Info -->
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h4 class="font-bold text-slate-900 mb-4">Course Details</h4>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-500">Duration</span>
+                                    <span class="font-bold text-slate-900">8 Weeks</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-500">Level</span>
+                                    <span class="font-bold text-slate-900">Intermediate</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-500">Students</span>
+                                    <span class="font-bold text-slate-900">850+</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-500">Language</span>
+                                    <span class="font-bold text-slate-900">English</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-500">Certificate</span>
+                                    <span class="font-bold text-slate-900">Yes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-primary-blue text-white pt-20 pb-10 border-t border-blue-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1">
+                    <a href="../index.html" class="flex items-center gap-3 mb-6 group">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-primary-blue shadow-lg group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black text-white tracking-tight">Skillora</span>
+                    </a>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6">Revolutionizing modern education
+                        through
+                        precision, play, and practical mastery.</p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About
+                                Us</a>
+                        </li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a>
+                        </li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Support</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact
+                                Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact/Social -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Connect</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm mb-6">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <span>123 Innovation Dr, Tech City</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <a href="mailto:hello@skillora.com"
+                                class="hover:text-white transition">hello@skillora.com</a>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-blue-500 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-200 text-sm">
+                <p>&copy; 2026 Skillora. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details | Skillora</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .progress-container {
+            position: fixed;
+            top: 72px;
+            /* Navbar height approx */
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 40;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--secondary);
+            width: 0%;
+        }
+
+        .faq-item input:checked+label i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item input:checked~.faq-content {
+            max-height: 500px;
+            padding-top: 1rem;
+        }
+
+        .lightbox-trigger {
+            cursor: zoom-in;
+            position: relative;
+        }
+
+        .lightbox-trigger::after {
+            content: 'Click to Enlarge';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lightbox-trigger:hover::after {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-white text-gray-800">
+
+    <!-- Reading Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 glass shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex lg:hidden items-center justify-center w-10 h-10 bg-blue-50 text-primary-blue rounded-xl transition-all hover:bg-blue-100 mr-2">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </a>
+            <a href="../index.html" class="group flex items-center gap-3 no-underline">
+                <div
+                    class="w-10 h-10 bg-primary-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition duration-300">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-black text-slate-900 tracking-tight">Skillora</span>
+            </a>
+
+            <div class="hidden lg:flex space-x-8 text-slate-600 font-medium">
+                <a href="../index.html" class="hover:text-primary-blue transition">Home</a>
+                <a href="about.html" class="hover:text-primary-blue transition">About Us</a>
+                <a href="services.html" class="hover:text-primary-blue transition">Services</a>
+                <a href="blog.html" class="hover:text-primary-blue transition">Blog</a>
+                <a href="contact.html" class="hover:text-primary-blue transition">Contact Us</a>
+                </div>
+
+            <div class="flex items-center gap-4">
+                <div class="user-dropdown-container">
+                    <button id="user-menu-button"
+                        class="hidden sm:flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 text-gray-400 hover:text-primary-blue hover:border-primary-blue transition duration-300">
+                        <i data-lucide="user-circle" class="w-6 h-6"></i>
+                    </button>
+                    <div id="user-dropdown"
+                        class="hidden absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-[100]">
+                        <a href="login.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Log
+                            In</a>
+                        <a href="signup.html"
+                            class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Sign
+                            Up</a>
+                    </div>
+                </div>
+                <a id="navbar-cta" href="signup.html"
+                    class="hidden md:flex items-center justify-center btn-skillora btn-skillora-sm no-underline">
+                    Get Started
+                </a>
+                <button id="mobile-menu-button" class="lg:hidden text-primary-blue"><i data-lucide="menu"></i></button>
+            </div>
+            <div id="mobile-menu" class="lg:hidden bg-white shadow-xl absolute w-full left-0 top-full overflow-hidden">
+            <a href="../index.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Home</a>
+            <a href="about.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">About Us</a>
+            <a href="services.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Services</a>
+            <a href="blog.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Blog</a>
+            <a href="contact.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Contact Us</a>
+            <a href="admin-dashboard.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Admin Dashboard</a>
+            <a href="login.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Login</a>
+            <a href="signup.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Sign Up</a>
+            <button onclick="openModal()" class="w-full btn-skillora rounded-none py-4">Book Demo</button>
+        </div>
+    </header>
+
+    <!-- Post Header -->
+    <section class="py-20 bg-slate-50 border-b border-slate-100">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-100 text-primary-blue rounded-full text-xs font-bold mb-6"
+                data-animate="fade-up">
+                STUDY TIPS
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 mb-8 leading-tight animate-headline">5 Ways to
+                Ace Your Geometry Finals Without Stress</h1>
+            <div class="flex items-center justify-center gap-6 text-slate-500" data-animate="fade-up">
+                <div class="flex items-center gap-2">
+                    <img src="../img/icon.jpeg" class="w-12 h-12 rounded-full border-2 border-white shadow-sm">
+                    <div class="text-left leading-tight">
+                        <p class="font-bold text-slate-900">Dr. Sarah Chen</p>
+                        <p class="text-xs uppercase tracking-wider">Pedagogy Specialist</p>
+                    </div>
+                </div>
+                <div class="w-px h-10 bg-slate-200"></div>
+                <div class="text-left leading-tight">
+                    <p class="font-bold text-slate-900">Oct 12, 2025</p>
+                    <p class="text-xs flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 6 MIN READ
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content & Sidebar -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-16">
+
+            <!-- Article Body -->
+            <article class="lg:col-span-8 space-y-12 text-lg text-slate-600 leading-relaxed" data-animate="fade-up">
+
+                <!-- Main Post Image with Lightbox styling -->
+                <div class="lightbox-trigger rounded-[2.5rem] overflow-hidden shadow-2xl mb-12">
+                    <img src="../img/Happy Student img.jpeg" alt="Final Exam prep"
+                        class="w-full hover:scale-105 transition duration-700">
+                </div>
+
+                <p class="text-xl font-medium text-slate-800 leading-snug">
+                    Geometry is often the most feared branch of mathematics due to its visual nature and reliance on
+                    logic over rote calculation. However, mastering it is a matter of changing your perspective.
+                </p>
+
+                <h2 class="text-3xl font-bold text-slate-900 border-l-8 border-primary-blue pl-6">1. Visualize Before
+                    You Calculate</h2>
+                <p>
+                    Before you touch your calculator, touch your pencil. Sketching a problem allows your brain to engage
+                    both its verbal and visual centers. This "dual coding" technique is the secret weapon of
+                    top-performing math students.
+                </p>
+
+                <!-- Embedded Video Placeholder -->
+                <div class="bg-slate-900 aspect-video rounded-3xl overflow-hidden relative group shadow-2xl my-16">
+                    <img src="../img/Instructor.jpeg" class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div
+                            class="w-20 h-20 bg-primary-blue text-white rounded-full flex items-center justify-center shadow-2xl cursor-pointer hover:scale-110 transition duration-300">
+                            <i data-lucide="play" class="fill-current w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute bottom-6 left-6 text-white text-sm font-bold bg-black/40 px-4 py-2 rounded-lg backdrop-blur-md">
+                        Video: Mastering Parallel Lines (4:20)
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-slate-900 border-l-8 border-primary-blue pl-6">2. Master the Core
+                    Axioms</h2>
+                <p>
+                    Don't memorize 100 theorems. Memorize the 5 that build the rest. Once you understand <i>why</i> the
+                    Pythagorean theorem works, you don't need to memorize it; you can reconstruct it.
+                </p>
+
+                <blockquote
+                    class="bg-indigo-50 p-12 rounded-[2rem] border-l-8 border-secondary-pink text-2xl italic text-slate-800 relative">
+                    <i data-lucide="quote" class="absolute top-6 left-6 text-indigo-100 w-16 h-16 -z-10"></i>
+                    "Mathematics is not about numbers, equations, or algorithms: it is about understanding how the world
+                    fits together."
+                </blockquote>
+
+                <!-- Intra-post FAQ -->
+                <div class="space-y-6 bg-slate-50 p-10 rounded-[2.5rem] border border-slate-100">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Common Geometry Hurdles</h3>
+                    <div class="faq-item">
+                        <input type="checkbox" id="geo-faq-1" class="hidden">
+                        <label for="geo-faq-1"
+                            class="flex justify-between items-center font-bold cursor-pointer text-slate-800">
+                            How do I remember trigonometric ratios?
+                            <i data-lucide="chevron-down" class="transition-transform"></i>
+                        </label>
+                        <div
+                            class="faq-content max-h-0 overflow-hidden text-slate-600 text-sm transition-all duration-300">
+                            Use mnemonics like SOH-CAH-TOA, but better yet, practice drawing the unit circle.
+                            Visualization beats memorization every time.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <input type="checkbox" id="geo-faq-2" class="hidden">
+                        <label for="geo-faq-2"
+                            class="flex justify-between items-center font-bold cursor-pointer text-slate-800">
+                            When should I use a compass vs. a sketch?
+                            <i data-lucide="chevron-down" class="transition-transform"></i>
+                        </label>
+                        <div
+                            class="faq-content max-h-0 overflow-hidden text-slate-600 text-sm transition-all duration-300">
+                            Use a compass for final constructions, but always sketch first to test your logic.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Engagement & Social Share -->
+                <div
+                    class="pt-16 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-8">
+                    <div class="flex items-center gap-6">
+                        <span class="font-bold text-slate-900 uppercase tracking-widest text-sm">Spread the word:</span>
+                        <div class="flex gap-4">
+                            <a href="#"
+                                class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition duration-300"><i
+                                    data-lucide="facebook"></i></a>
+                            <a href="#"
+                                class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center hover:bg-[#1DA1F2] hover:text-white transition duration-300"><i
+                                    data-lucide="twitter"></i></a>
+                            <a href="#"
+                                class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center hover:bg-[#0A66C2] hover:text-white transition duration-300"><i
+                                    data-lucide="linkedin"></i></a>
+                        </div>
+                    </div>
+                    <button
+                        class="flex items-center gap-3 btn-skillora !bg-blue-50 !text-primary-blue hover:!bg-primary-blue hover:!text-white transition-all">
+                        <i data-lucide="heart" class="w-5 h-5 fill-current"></i> 1,248 Likes
+                    </button>
+                </div>
+            </article>
+
+            <!-- Sidebar -->
+            <aside class="lg:col-span-4 space-y-16">
+                <!-- Popular Posts -->
+                <div data-animate="fade-up">
+                    <h3 class="text-xl font-bold mb-8 flex items-center gap-3">
+                        <span class="w-1.5 h-6 bg-primary-blue rounded-full"></span>
+                        Popular This Week
+                    </h3>
+                    <div class="space-y-6">
+                        <a href="#" class="flex gap-4 group">
+                            <img src="../img/Instructor.jpeg" class="w-20 h-20 rounded-2xl object-cover shrink-0">
+                            <div>
+                                <h4 class="font-bold text-sm leading-snug group-hover:text-primary-blue transition">The
+                                    Future of AI in Education</h4>
+                                <p class="text-xs text-slate-400 mt-2 flex items-center gap-1"><i data-lucide="calendar"
+                                        class="w-3 h-3"></i> SEP 28, 2025</p>
+                            </div>
+                        </a>
+                        <a href="#" class="flex gap-4 group">
+                            <img src="../img/Why choose us.jpeg" class="w-20 h-20 rounded-2xl object-cover shrink-0">
+                            <div>
+                                <h4 class="font-bold text-sm leading-snug group-hover:text-primary-blue transition">
+                                    Mastering Mental Arithmetic</h4>
+                                <p class="text-xs text-slate-400 mt-2 flex items-center gap-1"><i data-lucide="calendar"
+                                        class="w-3 h-3"></i> AUG 12, 2025</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div data-animate="fade-up">
+                    <h3 class="text-xl font-bold mb-8 flex items-center gap-3">
+                        <span class="w-1.5 h-6 bg-secondary-pink rounded-full"></span>
+                        Categories
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="blog.html"
+                            class="px-4 py-2 bg-slate-50 border border-slate-100 rounded-xl text-sm font-bold hover:bg-white hover:shadow-lg transition">Study
+                            Tips (12)</a>
+                        <a href="blog.html"
+                            class="px-4 py-2 bg-slate-50 border border-slate-100 rounded-xl text-sm font-bold hover:bg-white hover:shadow-lg transition">Curriculum
+                            (8)</a>
+                        <a href="blog.html"
+                            class="px-4 py-2 bg-slate-50 border border-slate-100 rounded-xl text-sm font-bold hover:bg-white hover:shadow-lg transition">News
+                            (5)</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Ad/CTA -->
+                <div data-animate="fade-up"
+                    class="p-8 bg-slate-900 rounded-[2.5rem] text-white relative overflow-hidden text-center">
+                    <div class="relative z-10">
+                        <h4 class="text-2xl font-bold mb-4">Want to Master Geometry?</h4>
+                        <p class="text-slate-400 text-sm mb-8">Join our upcoming free webinar with Dr. Sarah Chen.</p>
+                        <button onclick="openModal()" class="w-full btn-skillora py-4 !rounded-2xl">Register
+                            Now</button>
+                    </div>
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary-blue opacity-10 rounded-full blur-3xl">
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="bg-primary-blue text-white pt-20 pb-10 border-t border-blue-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1">
+                    <a href="../index.html" class="flex items-center gap-3 mb-6 group">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-primary-blue shadow-lg group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black text-white tracking-tight">Skillora</span>
+                    </a>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6">Revolutionizing modern education
+                        through
+                        precision, play, and practical mastery.</p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About
+                                Us</a>
+                        </li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a>
+                        </li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Support</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact
+                                Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact/Social -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Connect</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm mb-6">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <span>123 Innovation Dr, Tech City</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <a href="mailto:hello@skillora.com"
+                                class="hover:text-white transition">hello@skillora.com</a>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-blue-500 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-200 text-sm">
+                <p>&copy; 2026 Skillora. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Reading Progress Bar Logic
+        window.onscroll = function () {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Skillora</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .auth-bg {
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .auth-content-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .auth-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        .social-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-btn:hover {
+            background-color: #f1f5f9;
+            border-color: #2C7BE5;
+            transform: translateY(-2px);
+        }
+
+        .input-focus:focus {
+            border-color: #2C7BE5;
+            box-shadow: 0 0 0 4px rgba(44, 123, 229, 0.1);
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 0.35rem;
+            margin-left: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: none;
+        }
+
+        .input-error {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+        }
+
+        /* Success Modal Styles */
+        #successModal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #successModal.hidden {
+            opacity: 0;
+            visibility: hidden;
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="auth-bg">
+
+    <!-- Content Wrapper -->
+    <div class="auth-content-wrapper">
+        <!-- Brand Header -->
+        <header class="absolute top-6 sm:top-8 left-0 w-full px-6 sm:px-12 flex justify-between items-center z-20">
+            <div class="flex items-center gap-3">
+                <a href="../index.html"
+                    class="flex lg:hidden items-center justify-center w-10 h-10 bg-blue-50 text-primary-blue rounded-xl transition-all hover:bg-blue-100">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                </a>
+                <a href="../index.html" class="group flex items-center gap-3 no-underline">
+                    <div
+                        class="w-10 h-10 bg-primary-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:rotate-6 transition duration-300">
+                        <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Skillora</span>
+                </a>
+            </div>
+            <a href="../index.html"
+                class="hidden lg:flex items-center gap-2 text-slate-600 font-bold hover:text-primary-blue transition text-sm">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Site
+            </a>
+        <div id="mobile-menu" class="lg:hidden bg-white shadow-xl absolute w-full left-0 top-full overflow-hidden">
+            <a href="../index.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Home</a>
+            <a href="about.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">About Us</a>
+            <a href="services.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Services</a>
+            <a href="blog.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Blog</a>
+            <a href="contact.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Contact Us</a>
+            <a href="admin-dashboard.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Admin Dashboard</a>
+            <a href="login.html" class="block py-3 px-8 text-slate-600 font-medium hover:bg-light-lavender">Login</a>
+            <a href="signup.html" class="block py-3 px-8 text-primary-blue font-bold hover:bg-light-lavender">Sign Up</a>
+            <button onclick="openModal()" class="w-full btn-skillora rounded-none py-4">Book Demo</button>
+        </div>
+    </header>
+
+        <!-- Main Content -->
+        <main class="w-full max-w-[480px] relative z-10 pt-16 pb-8">
+            <!-- Auth Card -->
+            <div class="auth-card w-full p-6 sm:p-10 rounded-3xl" data-animate="fade-up">
+
+                <!-- Welcome Message -->
+                <div class="text-center mb-6">
+                    <div class="inline-flex mb-4 p-3 bg-blue-50 text-primary-blue rounded-2xl">
+                        <i data-lucide="user-plus" class="w-6 h-6"></i>
+                    </div>
+                    <h1 class="text-2xl font-black text-slate-900 mb-2">Join Skillora</h1>
+                    <p class="text-slate-500 font-medium text-sm">Join 50,000+ students mastering visual logic.</p>
+                </div>
+
+                <!-- Social Logins -->
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <button
+                        class="social-btn flex items-center justify-center gap-2 py-3 border border-slate-200 rounded-xl font-bold text-slate-700 bg-white text-xs sm:text-sm">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-4 h-4" alt="Google">
+                        <span>Google</span>
+                    </button>
+                    <button
+                        class="social-btn flex items-center justify-center gap-2 py-3 border border-slate-200 rounded-xl font-bold text-slate-700 bg-white text-xs sm:text-sm">
+                        <i data-lucide="github" class="w-4 h-4 text-slate-900"></i>
+                        <span>GitHub</span>
+                    </button>
+                </div>
+
+                <!-- Divider -->
+                <div class="relative flex items-center mb-6">
+                    <div class="flex-grow border-t border-slate-200"></div>
+                    <span
+                        class="px-3 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] whitespace-nowrap">OR</span>
+                    <div class="flex-grow border-t border-slate-200"></div>
+                </div>
+
+                <!-- Sign Up Form -->
+                <form id="signupForm" class="space-y-4" novalidate>
+                    <!-- Full Name -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Full
+                            Name</label>
+                        <div class="relative">
+                            <i data-lucide="user"
+                                class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                            <input type="text" id="fullname" required
+                                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none transition input-focus text-slate-900 font-medium text-sm">
+                        </div>
+                        <p id="fullnameError" class="error-message">Name is required</p>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label
+                            class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Email</label>
+                        <div class="relative">
+                            <i data-lucide="mail"
+                                class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                            <input type="email" id="email" required
+                                class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none transition input-focus text-slate-900 font-medium text-sm">
+                        </div>
+                        <p id="emailError" class="error-message">Invalid email address</p>
+                    </div>
+
+                    <!-- Password & Confirm row -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label
+                                class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Password</label>
+                            <div class="relative">
+                                <i data-lucide="lock"
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                                <input type="password" id="password" required
+                                    class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none transition input-focus text-slate-900 font-medium text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Confirm</label>
+                            <div class="relative">
+                                <i data-lucide="shield-check"
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+                                <input type="password" id="confirmPassword" required
+                                    class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none transition input-focus text-slate-900 font-medium text-sm">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Error messages container -->
+                    <div class="flex flex-col space-y-1">
+                        <p id="passwordError" class="error-message">Min 8 chars required</p>
+                        <p id="matchError" class="error-message">Passwords do not match</p>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full btn-skillora py-3.5 !rounded-xl uppercase tracking-widest text-xs font-bold shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 mt-2">
+                        Create Account
+                    </button>
+                </form>
+
+                <!-- Toggle Info -->
+                <div class="mt-6 pt-6 border-t border-slate-100 text-center">
+                    <p class="text-slate-500 font-medium text-xs">
+                        Already have an account?
+                        <a href="login.html" class="text-primary-blue font-bold ml-1 hover:underline">Sign In</a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Security Microcopy -->
+            <div class="mt-6 flex justify-center items-center gap-2 text-slate-400 text-[10px] font-medium"
+                data-animate="fade-up">
+                <i data-lucide="shield-check" class="w-3 h-3 text-green-500"></i>
+                <span>256-bit secure encryption</span>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-primary-blue text-white pt-20 pb-10 border-t border-blue-400 w-full relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1">
+                    <a href="../index.html" class="flex items-center gap-3 mb-6 group">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-primary-blue shadow-lg group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black text-white tracking-tight">Skillora</span>
+                    </a>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6">Revolutionizing modern education
+                        through
+                        precision, play, and practical mastery.</p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About
+                                Us</a>
+                        </li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a>
+                        </li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Support</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact
+                                Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact/Social -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Connect</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm mb-6">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <span>123 Innovation Dr, Tech City</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <a href="mailto:hello@skillora.com"
+                                class="hover:text-white transition">hello@skillora.com</a>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-blue-500 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-200 text-sm">
+                <p>&copy; 2026 Skillora. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Background Elements -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10">
+        <div
+            class="absolute top-[-5rem] sm:top-[-10rem] right-[-5rem] sm:right-[-10rem] w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-primary-blue/5 rounded-full blur-[80px] sm:blur-[100px]">
+        </div>
+        <div
+            class="absolute bottom-[-5rem] sm:bottom-[-10rem] left-[-5rem] sm:left-[-10rem] w-[30rem] sm:w-[40rem] h-[30rem] sm:h-[40rem] bg-secondary-pink/5 rounded-full blur-[80px] sm:blur-[100px]">
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-full max-w-md rounded-[2.5rem] p-10 text-center shadow-2xl scale-95 transition-transform duration-300"
+            id="modalCard">
+            <div class="w-20 h-20 bg-green-50 text-green-500 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                <i data-lucide="check-circle" class="w-10 h-10"></i>
+            </div>
+            <h2 class="text-2xl font-black text-slate-900 mb-4">Welcome to Skillora!</h2>
+            <p class="text-slate-500 font-medium mb-8">Your account has been created successfully. You're ready to start
+                your learning journey.</p>
+            <button id="modalContinue"
+                class="w-full btn-skillora py-4 !rounded-2xl uppercase tracking-widest text-sm shadow-lg">
+                Continue
+            </button>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        const signupForm = document.getElementById('signupForm');
+        const fullname = document.getElementById('fullname');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+
+        const successModal = document.getElementById('successModal');
+        const modalContinue = document.getElementById('modalContinue');
+        const modalCard = document.getElementById('modalCard');
+
+        const showError = (input, errorId, show) => {
+            const errorElement = document.getElementById(errorId);
+            if (show) {
+                errorElement.style.display = 'block';
+                input.classList.add('input-error');
+            } else {
+                errorElement.style.display = 'none';
+                input.classList.remove('input-error');
+            }
+        };
+
+        const validateEmail = (email) => {
+            return String(email).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        };
+
+        const openModal = () => {
+            successModal.classList.remove('hidden');
+            setTimeout(() => {
+                successModal.classList.add('opacity-100');
+                modalCard.classList.remove('scale-95');
+                modalCard.classList.add('scale-100');
+            }, 10);
+
+            // Reinitialize icons
+            lucide.createIcons();
+
+            // Auto-redirect after 3 seconds
+            setTimeout(() => {
+                closeModal();
+            }, 3000);
+        };
+
+        const closeModal = () => {
+            successModal.classList.remove('opacity-100');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+            setTimeout(() => {
+                successModal.classList.add('hidden');
+                window.location.href = '../index.html';
+            }, 300);
+        };
+
+        // Close modal on outside click
+        successModal.addEventListener('click', (e) => {
+            if (e.target === successModal) closeModal();
+        });
+
+        // Close modal on Esc key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !successModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        modalContinue.addEventListener('click', closeModal);
+
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isValid = true;
+
+            // Name validation
+            if (!fullname.value.trim()) {
+                showError(fullname, 'fullnameError', true);
+                isValid = false;
+            } else {
+                showError(fullname, 'fullnameError', false);
+            }
+
+            // Email validation
+            if (!validateEmail(email.value)) {
+                showError(email, 'emailError', true);
+                isValid = false;
+            } else {
+                showError(email, 'emailError', false);
+            }
+
+            // Password length validation
+            if (password.value.length < 8) {
+                showError(password, 'passwordError', true);
+                isValid = false;
+            } else {
+                showError(password, 'passwordError', false);
+            }
+
+            // Password match validation
+            if (password.value !== confirmPassword.value || !confirmPassword.value) {
+                showError(confirmPassword, 'matchError', true);
+                isValid = false;
+            } else {
+                showError(confirmPassword, 'matchError', false);
+            }
+
+            if (isValid) {
+                openModal();
+            }
+        });
+    </script>
+</body>
+
+</html>

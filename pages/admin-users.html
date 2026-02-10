@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users | Skillora Admin</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --sidebar-width: 280px;
+            --sidebar-collapsed-width: 88px;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sidebar.collapsed {
+            width: var(--sidebar-collapsed-width);
+        }
+
+        .sidebar.collapsed .sidebar-text {
+            opacity: 0;
+            pointer-events: none;
+            width: 0;
+            margin: 0;
+        }
+
+        .sidebar.collapsed .logo-name {
+            display: none;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .main-content.sidebar-collapsed {
+            margin-left: var(--sidebar-collapsed-width);
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.mobile-open {
+                transform: translateX(0);
+                width: var(--sidebar-width);
+            }
+
+            .main-content.sidebar-collapsed {
+                margin-left: 0;
+            }
+        }
+
+        .sidebar-link {
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-link.active {
+            background-color: #EEF2FF;
+            color: #2C7BE5;
+        }
+
+        .sidebar-link:hover:not(.active) {
+            background-color: #F8FAFC;
+            color: #2C7BE5;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8FAFC] font-sans text-slate-800">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="sidebar fixed inset-y-0 left-0 z-50 bg-white border-r border-slate-200">
+            <div class="h-full flex flex-col">
+                <!-- Logo -->
+                <div class="p-6 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 bg-primary-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 shrink-0">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <div class="logo-name flex flex-col">
+                            <span class="font-bold text-xl text-slate-900 leading-tight">Skillora</span>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Admin
+                                Dashboard</span>
+                        </div>
+                    </div>
+                    <button id="toggle-sidebar"
+                        class="hidden lg:flex text-slate-400 hover:text-primary-blue w-8 h-8 items-center justify-center rounded-lg hover:bg-slate-50">
+                        <i data-lucide="chevron-left" id="toggle-icon"></i>
+                    </button>
+                    <button id="close-mobile-sidebar" class="lg:hidden text-slate-400 hover:text-primary-blue">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+
+                <!-- Nav Links -->
+                <nav class="flex-1 px-4 space-y-2 mt-4 overflow-y-auto no-scrollbar">
+                    <p
+                        class="sidebar-text px-4 text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 transition-opacity">
+                        Menu</p>
+
+                    <a href="admin-dashboard.html"
+                        class="sidebar-link flex items-center gap-4 px-4 py-3 rounded-xl font-medium text-slate-500">
+                        <i data-lucide="layout-dashboard" class="w-5 h-5 shrink-0"></i>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity">Dashboard</span>
+                    </a>
+                    <a href="admin-users.html"
+                        class="sidebar-link active flex items-center gap-4 px-4 py-3 rounded-xl font-medium">
+                        <i data-lucide="users" class="w-5 h-5 shrink-0"></i>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity">Manage Users</span>
+                    </a>
+                    <a href="admin-courses.html"
+                        class="sidebar-link flex items-center gap-4 px-4 py-3 rounded-xl font-medium text-slate-500">
+                        <i data-lucide="book-open" class="w-5 h-5 shrink-0"></i>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity">Courses</span>
+                    </a>
+                    <a href="admin-revenue.html"
+                        class="sidebar-link flex items-center gap-4 px-4 py-3 rounded-xl font-medium text-slate-500">
+                        <i data-lucide="credit-card" class="w-5 h-5 shrink-0"></i>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity">Revenue</span>
+                    </a>
+
+                    <p
+                        class="sidebar-text px-4 text-xs font-bold text-slate-400 uppercase tracking-widest mt-8 mb-4 transition-opacity">
+                        Admin</p>
+
+                    <a href="admin-analytics.html"
+                        class="sidebar-link flex items-center gap-4 px-4 py-3 rounded-xl font-medium text-slate-500">
+                        <i data-lucide="bar-chart-3" class="w-5 h-5 shrink-0"></i>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity">Analytics</span>
+                    </a>
+                    <a href="admin-settings.html"
+                        class="sidebar-link flex items-center gap-4 px-4 py-3 rounded-xl font-medium text-slate-500">
+                        <i data-lucide="settings" class="w-5 h-5 shrink-0"></i>
+                        <span class="sidebar-text whitespace-nowrap transition-opacity">Settings</span>
+                    </a>
+                </nav>
+
+                <!-- Profile Area -->
+                <div class="p-4 border-t border-slate-100 mb-2">
+                    <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 cursor-pointer transition">
+                        <img src="../img/icon.jpeg"
+                            class="w-10 h-10 rounded-xl border-2 border-white shadow-sm shrink-0" alt="Admin">
+                        <div class="sidebar-text overflow-hidden transition-opacity">
+                            <p class="font-bold text-sm text-slate-900 truncate">Alex Jackson</p>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Administrator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="flex-1 main-content p-4 lg:p-8">
+
+            <!-- Mobile Top Bar -->
+            <div
+                class="lg:hidden flex items-center justify-between mb-6 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="flex items-center gap-3">
+                    <a href="../index.html" class="flex items-center justify-center w-8 h-8 bg-blue-50 text-primary-blue rounded-lg transition-colors hover:bg-blue-100 mr-1">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    </a>
+                    <div class="w-8 h-8 bg-primary-blue rounded-lg flex items-center justify-center text-white">
+                        <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-bold">Skillora</span>
+                </div>
+                <button id="open-mobile-sidebar" class="text-slate-500 p-2">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+
+            <!-- Breadcrumb -->
+            <div class="mb-6">
+                <nav class="flex items-center gap-2 text-sm">
+                    <a href="admin-dashboard.html"
+                        class="text-slate-400 hover:text-primary-blue transition">Dashboard</a>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+                    <span class="text-slate-900 font-bold">Manage Users</span>
+                </nav>
+            </div>
+
+            <!-- Page Header -->
+            <header class="mb-10">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                        <h1 class="text-3xl font-extrabold text-slate-900 mb-2">User Management</h1>
+                        <p class="text-slate-500 font-medium">Manage all registered users, roles, and permissions across
+                            the Skillora platform.</p>
+                    </div>
+                    <button class="btn-skillora btn-skillora-sm !rounded-2xl">
+                        <i data-lucide="user-plus" class="w-4 h-4"></i> Add New User
+                    </button>
+                </div>
+            </header>
+
+            <!-- Key Statistics -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm">
+                    <div class="flex items-start justify-between mb-4">
+                        <div
+                            class="w-12 h-12 bg-blue-50 text-primary-blue rounded-2xl flex items-center justify-center">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-green-500 text-xs font-bold bg-green-50 px-2 py-1 rounded-lg">+12.5%</span>
+                    </div>
+                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Total Users</p>
+                    <h3 class="text-2xl font-extrabold text-slate-900">24,582</h3>
+                    <p class="text-xs text-slate-500 mt-2">All registered platform users</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center">
+                            <i data-lucide="user-check" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-green-500 text-xs font-bold bg-green-50 px-2 py-1 rounded-lg">+8.2%</span>
+                    </div>
+                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Active Users</p>
+                    <h3 class="text-2xl font-extrabold text-slate-900">18,420</h3>
+                    <p class="text-xs text-slate-500 mt-2">Users active in last 30 days</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm">
+                    <div class="flex items-start justify-between mb-4">
+                        <div
+                            class="w-12 h-12 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center">
+                            <i data-lucide="user-plus" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-green-500 text-xs font-bold bg-green-50 px-2 py-1 rounded-lg">+24%</span>
+                    </div>
+                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">New This Month</p>
+                    <h3 class="text-2xl font-extrabold text-slate-900">1,842</h3>
+                    <p class="text-xs text-slate-500 mt-2">Registered in February 2026</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center">
+                            <i data-lucide="user-x" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-red-500 text-xs font-bold bg-red-50 px-2 py-1 rounded-lg">-2.1%</span>
+                    </div>
+                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Inactive Users</p>
+                    <h3 class="text-2xl font-extrabold text-slate-900">6,162</h3>
+                    <p class="text-xs text-slate-500 mt-2">No activity in 90+ days</p>
+                </div>
+            </div>
+
+            <!-- User Management Table -->
+            <div class="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm overflow-hidden mb-10">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
+                    <h4 class="font-extrabold text-slate-900 text-lg">All Users</h4>
+                    <div class="flex items-center gap-4 w-full md:w-auto">
+                        <div class="relative w-full">
+                            <i data-lucide="search"
+                                class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4"></i>
+                            <input type="text" placeholder="Search users..."
+                                class="pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none text-sm w-full md:w-64">
+                        </div>
+                        <button class="p-2 border border-slate-200 rounded-xl hover:bg-slate-50 transition"><i
+                                data-lucide="filter" class="w-5 h-5 text-slate-500"></i></button>
+                        <button class="p-2 border border-slate-200 rounded-xl hover:bg-slate-50 transition"><i
+                                data-lucide="download" class="w-5 h-5 text-slate-500"></i></button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto no-scrollbar">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr
+                                class="text-slate-400 text-xs font-bold uppercase tracking-widest border-b border-slate-50">
+                                <th class="pb-4 px-4 whitespace-nowrap">User</th>
+                                <th class="pb-4 px-4 whitespace-nowrap">Email</th>
+                                <th class="pb-4 px-4 whitespace-nowrap">Role</th>
+                                <th class="pb-4 px-4 whitespace-nowrap">Join Date</th>
+                                <th class="pb-4 px-4 whitespace-nowrap">Status</th>
+                                <th class="pb-4 px-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="py-5 px-4 font-bold text-slate-900 border-b border-slate-100">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs">
+                                            SM</div>
+                                        Sarah Miller
+                                    </div>
+                                </td>
+                                <td class="py-5 px-4 text-slate-500 border-b border-slate-100">sarah.m@email.com</td>
+                                <td class="py-5 px-4 text-slate-500 border-b border-slate-100">Student</td>
+                                <td class="py-5 px-4 text-slate-500 border-b border-slate-100">Jan 12, 2026</td>
+                                <td class="py-5 px-4 border-b border-slate-100">
+                                    <span
+                                        class="bg-green-50 text-green-600 text-[10px] font-bold px-2 py-1 rounded-lg uppercase">Active</span>
+                                </td>
+                                <td class="py-5 px-4 border-b border-slate-100 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <button
+                                            class="p-2 text-slate-400 hover:text-primary-blue hover:bg-indigo-50 rounded-lg transition"><i
+                                                data-lucide="edit-3" class="w-4 h-4"></i></button>
+                                        <button
+                                            class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition"><i
+                                                data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                        <button
+                                            class="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition"><i
+                                                data-lucide="more-vertical" class="w-4 h-4"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="py-5 px-4 font-bold text-slate-900 border-b border-slate-100">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs">
+                                            DC</div>
+                                        David Chen
+                                    </div>
+                                </td>
+                                <td class="py-5 px-4 text-slate-500 border-b border-slate-100">d.chen@email.com</td>
+                                <td class="py-5 px-4 text-slate-500 border-b border-slate-100">Instructor</td>
+                                <td class="py-5 px-4 text-slate-500 border-b border-slate-100">Jan 10, 2026</td>
+                                <td class="py-5 px-4 border-b border-slate-100">
+                                    <span
+                                        class="bg-orange-50 text-orange-600 text-[10px] font-bold px-2 py-1 rounded-lg uppercase">Pending</span>
+                                </td>
+                                <td class="py-5 px-4 border-b border-slate-100 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <button
+                                            class="p-2 text-slate-400 hover:text-primary-blue hover:bg-indigo-50 rounded-lg transition"><i
+                                                data-lucide="edit-3" class="w-4 h-4"></i></button>
+                                        <button
+                                            class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition"><i
+                                                data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                        <button
+                                            class="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition"><i
+                                                data-lucide="more-vertical" class="w-4 h-4"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="py-5 px-4 font-bold text-slate-900 border-b border-slate-100">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center font-bold text-xs">
+                                            EJ</div>
+                                        Emma Johnson
+                                    </div>
+                                </td>
+                                <td class="py-5 px-4 text-slate-500 border-b border-slate-100">emma.j@email.com</td>
+                                <td class="py-5 px-4 text-slate-500 border-b border-slate-100">Student</td>
+                                <td class="py-5 px-4 text-slate-500 border-b border-slate-100">Jan 8, 2026</td>
+                                <td class="py-5 px-4 border-b border-slate-100">
+                                    <span
+                                        class="bg-green-50 text-green-600 text-[10px] font-bold px-2 py-1 rounded-lg uppercase">Active</span>
+                                </td>
+                                <td class="py-5 px-4 border-b border-slate-100 text-right">
+                                    <div class="flex items-center justify-end gap-2">
+                                        <button
+                                            class="p-2 text-slate-400 hover:text-primary-blue hover:bg-indigo-50 rounded-lg transition"><i
+                                                data-lucide="edit-3" class="w-4 h-4"></i></button>
+                                        <button
+                                            class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition"><i
+                                                data-lucide="trash-2" class="w-4 h-4"></i></button>
+                                        <button
+                                            class="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition"><i
+                                                data-lucide="more-vertical" class="w-4 h-4"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex items-center justify-between mt-8 pt-6 border-t border-slate-100">
+                    <p class="text-sm text-slate-500">Showing <span class="font-bold">1-10</span> of <span
+                            class="font-bold">24,582</span> users</p>
+                    <div class="flex items-center gap-2">
+                        <button
+                            class="px-4 py-2 border border-slate-200 rounded-xl text-sm font-bold hover:bg-slate-50 transition">Previous</button>
+                        <button class="px-4 py-2 bg-primary-blue text-white rounded-xl text-sm font-bold">1</button>
+                        <button
+                            class="px-4 py-2 border border-slate-200 rounded-xl text-sm font-bold hover:bg-slate-50 transition">2</button>
+                        <button
+                            class="px-4 py-2 border border-slate-200 rounded-xl text-sm font-bold hover:bg-slate-50 transition">3</button>
+                        <button
+                            class="px-4 py-2 border border-slate-200 rounded-xl text-sm font-bold hover:bg-slate-50 transition">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm">
+                    <div
+                        class="w-12 h-12 bg-blue-50 text-primary-blue rounded-2xl flex items-center justify-center mb-4">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </div>
+                    <h5 class="font-bold text-slate-900 mb-2">Send Bulk Email</h5>
+                    <p class="text-sm text-slate-500 mb-4">Send announcements or updates to all users or specific
+                        groups.</p>
+                    <button class="text-primary-blue font-bold text-sm hover:underline">Send Email →</button>
+                </div>
+
+                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm">
+                    <div class="w-12 h-12 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mb-4">
+                        <i data-lucide="file-text" class="w-6 h-6"></i>
+                    </div>
+                    <h5 class="font-bold text-slate-900 mb-2">Export User Data</h5>
+                    <p class="text-sm text-slate-500 mb-4">Download user data in CSV or Excel format for analysis.</p>
+                    <button class="text-primary-blue font-bold text-sm hover:underline">Export Data →</button>
+                </div>
+
+                <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm">
+                    <div
+                        class="w-12 h-12 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center mb-4">
+                        <i data-lucide="shield" class="w-6 h-6"></i>
+                    </div>
+                    <h5 class="font-bold text-slate-900 mb-2">Manage Permissions</h5>
+                    <p class="text-sm text-slate-500 mb-4">Configure user roles and access permissions.</p>
+                    <button class="text-primary-blue font-bold text-sm hover:underline">Configure →</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Sidebar Elements
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const toggleBtn = document.getElementById('toggle-sidebar');
+        const toggleIcon = document.getElementById('toggle-icon');
+        const openMobileBtn = document.getElementById('open-mobile-sidebar');
+        const closeMobileBtn = document.getElementById('close-mobile-sidebar');
+
+        // Toggle Sidebar Logic
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('sidebar-collapsed');
+
+            // Update Icon
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.setAttribute('data-lucide', 'chevron-right');
+            } else {
+                toggleIcon.setAttribute('data-lucide', 'chevron-left');
+            }
+            lucide.createIcons();
+        });
+
+        // Mobile Sidebar Logic
+        openMobileBtn.addEventListener('click', () => {
+            sidebar.classList.add('mobile-open');
+        });
+
+        closeMobileBtn.addEventListener('click', () => {
+            sidebar.classList.remove('mobile-open');
+        });
+    </script>
+</body>
+
+</html>
