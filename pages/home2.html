@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home2 | Skillora Foundation</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@0.477.0"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --ngo-primary: #1E40AF;
+            --ngo-secondary: #0D9488;
+            --ngo-accent: #F59E0B;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-outfit {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .hero-pattern {
+            background-color: #f8fafc;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-800 antialiased">
+
+    <!-- Standardized Navbar -->
+    <header class="sticky top-0 z-50 glass">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <!-- Left: Brand -->
+            <a href="../index.html" class="flex items-center gap-3 no-underline group shrink-0">
+                <div
+                    class="w-10 h-10 bg-primary-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition duration-300">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-black text-slate-900 tracking-tight">Skillora</span>
+            </a>
+
+            <!-- Middle: Nav Links -->
+            <div class="hidden lg:flex items-center space-x-10">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="home2.html" class="nav-link active">Home2</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </div>
+
+            <!-- Right: Actions -->
+            <div class="flex items-center gap-4">
+                <div class="user-dropdown-container relative">
+                    <button id="user-menu-button"
+                        class="hidden sm:flex items-center justify-center w-10 h-10 rounded-full border border-gray-200 text-gray-400 hover:text-primary-blue hover:border-primary-blue transition duration-300">
+                        <i data-lucide="user-circle" class="w-6 h-6"></i>
+                    </button>
+                    <div id="user-dropdown"
+                        class="hidden absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-[100]">
+                        <a href="login.html" class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Login/Signup</a>
+                        <a href="admin-dashboard.html" class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">Admin Dashboard</a>
+                        <a href="user-dashboard.html" class="block px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-blue transition">User Dashboard</a>
+                    </div>
+                </div>
+                <a id="navbar-cta" href="signup.html"
+                    class="hidden md:flex items-center justify-center btn-skillora btn-skillora-sm !rounded-xl">
+                    Get Started
+                </a>
+                <button id="mobile-menu-button" class="lg:hidden text-slate-900 p-2"><i data-lucide="menu"></i></button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu"
+            class="lg:hidden bg-white shadow-xl absolute w-full left-0 top-full overflow-hidden border-t border-slate-50">
+            <div class="py-4 px-6 space-y-2">
+                <a href="../index.html"
+                    class="block py-3 px-4 text-slate-600 font-semibold hover:bg-slate-50 rounded-xl">Home</a>
+                <a href="home2.html" class="block py-3 px-4 text-primary-blue font-bold rounded-xl bg-blue-50">Home2</a>
+                <a href="about.html"
+                    class="block py-3 px-4 text-slate-600 font-semibold hover:bg-slate-50 rounded-xl">About Us</a>
+                <a href="services.html"
+                    class="block py-3 px-4 text-slate-600 font-semibold hover:bg-slate-50 rounded-xl">Services</a>
+                <a href="blog.html"
+                    class="block py-3 px-4 text-slate-600 font-semibold hover:bg-slate-50 rounded-xl">Blog</a>
+                <a href="contact.html"
+                    class="block py-3 px-4 text-slate-600 font-semibold hover:bg-slate-50 rounded-xl">Contact Us</a>
+                <hr class="my-4 border-slate-100">
+                <div class="grid grid-cols-2 gap-4">
+                    <a href="login.html"
+                        class="flex items-center justify-center py-3 text-slate-600 font-bold hover:bg-slate-50 rounded-xl border border-slate-200">Login</a>
+                    <a href="signup.html" class="flex items-center justify-center py-3 btn-skillora rounded-xl">Sign
+                        Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Professional Hero Section -->
+    <section class="relative hero-pattern pt-20 pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 gap-16 items-center">
+                <div class="text-center lg:text-left space-y-8 max-w-2xl mx-auto lg:mx-0">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-primary-blue rounded-full text-sm font-bold tracking-wide uppercase">
+                        <span class="w-2 h-2 bg-primary-blue rounded-full animate-pulse"></span>
+                        Empowering Future Leaders
+                    </div>
+                    <h1
+                        class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] tracking-tight">
+                        Nurturing the Next <br> Generation of <span class="text-primary-blue">Global Thinkers.</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-600 leading-relaxed font-medium">
+                        The Skillora Foundation provides elite educational resources, mentorship, and scholarships to
+                        underprivileged communities worldwide, bridging the gap between talent and opportunity.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                        <a href="signup.html"
+                            class="btn-skillora btn-skillora-lg !rounded-2xl !py-5 !px-12 shadow-xl shadow-blue-500/20 hover:scale-105 transition-all">
+                            Join Our Mission
+                        </a>
+                        <a href="about.html"
+                            class="inline-flex items-center justify-center px-12 py-5 bg-white border border-slate-200 text-slate-700 font-bold rounded-2xl hover:bg-slate-50 hover:border-slate-300 transition-all">
+                            Our Strategy
+                        </a>
+                    </div>
+                    <div class="flex items-center justify-center lg:justify-start gap-8 pt-8">
+                        <div class="flex -space-x-3">
+                            <img src="../img/icon.jpeg" class="w-12 h-12 rounded-full border-4 border-white shadow-sm"
+                                alt="U">
+                            <img src="../img/Happy Student img.jpeg"
+                                class="w-12 h-12 rounded-full border-4 border-white shadow-sm object-cover" alt="U">
+                            <div
+                                class="w-12 h-12 rounded-full border-4 border-white bg-slate-100 flex items-center justify-center text-xs font-black text-slate-500 shadow-sm">
+                                50k+
+                            </div>
+                        </div>
+                        <p class="text-sm font-bold text-slate-500 uppercase tracking-widest">Global Members</p>
+                    </div>
+                </div>
+
+                <div class="mt-20 lg:mt-0 relative">
+                    <div
+                        class="absolute -top-20 -left-20 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob">
+                    </div>
+                    <div
+                        class="absolute -bottom-20 -right-20 w-64 h-64 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000">
+                    </div>
+
+                    <div
+                        class="relative bg-white p-4 rounded-[3rem] shadow-2xl border border-slate-100 transform rotate-2 hover:rotate-0 transition duration-700">
+                        <img src="../img/Upper Primary (Grades 4-6).jpeg" alt="Education Impact"
+                            class="w-full h-auto rounded-[2.5rem] object-cover">
+                        <div
+                            class="absolute -bottom-10 -left-10 bg-white p-6 rounded-3xl shadow-2xl border border-slate-50 max-w-[240px] hidden md:block">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div
+                                    class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="check-circle" class="w-6 h-6"></i>
+                                </div>
+                                <span class="font-black text-slate-900 leading-tight">Elite <br> Curriculum</span>
+                            </div>
+                            <p class="text-xs text-slate-500 font-bold leading-relaxed whitespace-nowrap">Industry-grade
+                                learning paths <br> for every student.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="py-12 -mt-16 relative z-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-50 text-center stat-card">
+                    <div class="text-4xl font-black text-primary-blue mb-2">50k+</div>
+                    <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Students Empowered</p>
+                </div>
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-50 text-center stat-card">
+                    <div class="text-4xl font-black text-primary-blue mb-2">120+</div>
+                    <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Countries Reached</p>
+                </div>
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-50 text-center stat-card">
+                    <div class="text-4xl font-black text-primary-blue mb-2">$15M</div>
+                    <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Scholarships Awarded</p>
+                </div>
+                <div class="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-50 text-center stat-card">
+                    <div class="text-4xl font-black text-primary-blue mb-2">2.5k</div>
+                    <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Expert Mentors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Strategy Section -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 gap-20 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="bg-slate-100 rounded-[3rem] overflow-hidden aspect-square lg:aspect-[4/5] relative">
+                        <img src="../img/Why choose us.jpeg"
+                            class="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 transition duration-700"
+                            alt="Strategy">
+                        <div
+                            class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-12 text-white">
+                            <h3 class="text-3xl font-black mb-4 tracking-tight">Strategy for Change</h3>
+                            <p class="text-blue-100 font-medium leading-relaxed">Our multi-phase approach ensures
+                                sustainable growth and long-term academic success for every learner.</p>
+                        </div>
+                    </div>
+                    <!-- Overlapping Decorative element -->
+                    <div class="absolute -right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-4">
+                        <div
+                            class="w-16 h-16 bg-primary-blue rounded-2xl flex items-center justify-center text-white shadow-xl">
+                            <i data-lucide="target" class="w-8 h-8"></i>
+                        </div>
+                        <div
+                            class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-primary-blue shadow-xl border border-slate-100">
+                            <i data-lucide="users" class="w-8 h-8"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-10 order-1 lg:order-2 mb-16 lg:mb-0">
+                    <div class="space-y-4">
+                        <span class="text-sm font-bold text-primary-blue uppercase tracking-widest">Mission
+                            Focused</span>
+                        <h2 class="text-4xl sm:text-5xl font-black text-slate-900 leading-tight">Bridging the Gap
+                            Between <span class="text-primary-blue">Talent</span> and <span
+                                class="text-primary-blue">Opportunity.</span></h2>
+                        <p class="text-lg text-slate-600 font-medium leading-relaxed">We believe that brilliance is
+                            evenly distributed, but opportunity is not. Our mission is to democratize elite education
+                            for everyone, regardless of their background.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-6 group">
+                            <div
+                                class="w-14 h-14 bg-blue-50 text-primary-blue rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary-blue group-hover:text-white transition-all duration-300">
+                                <i data-lucide="shield" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-slate-900 mb-2">Sustainable Infrastructure</h4>
+                                <p class="text-slate-500 leading-relaxed font-medium">Building robust digital ecosystems
+                                    that remain accessible even with limited connectivity.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6 group border-t border-slate-50 pt-6">
+                            <div
+                                class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                                <i data-lucide="zap" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-slate-900 mb-2">Scalable Impact</h4>
+                                <p class="text-slate-500 leading-relaxed font-medium">Using AI-driven insights to tailor
+                                    learning paths for 4x faster mastery of complex subjects.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6 group border-t border-slate-50 pt-6">
+                            <div
+                                class="w-14 h-14 bg-orange-50 text-orange-500 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
+                                <i data-lucide="heart" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-slate-900 mb-2">Community First</h4>
+                                <p class="text-slate-500 leading-relaxed font-medium">Our mentors are local leaders who
+                                    inspire students through shared experiences and success.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Causes Section -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 text-center mb-16">
+            <span class="text-sm font-bold text-primary-blue uppercase tracking-widest">Our Programs</span>
+            <h2 class="text-4xl sm:text-5xl font-black text-slate-900 mt-4 mb-6">Featured Initiatives</h2>
+            <p class="text-slate-600 max-w-2xl mx-auto font-medium">Our focused initiatives target the most critical
+                educational gaps in communities worldwide.</p>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Cause 1 -->
+            <div class="bg-white rounded-[2.5rem] overflow-hidden card-shadow group flex flex-col h-full">
+                <div class="h-64 relative overflow-hidden">
+                    <img src="../img/Upper Primary (Grades 4-6).jpeg"
+                        class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Cause">
+                    <div
+                        class="absolute top-6 left-6 px-4 py-2 bg-white/90 backdrop-blur rounded-xl text-xs font-black text-primary-blue uppercase tracking-widest shadow-sm">
+                        STEM Education
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Visual Calculus for Rural Schools
+                    </h4>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">Bringing advanced mathematics to
+                        life through interactive visual logic for 10,000 students in rural districts.</p>
+                    <div class="mt-auto">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-slate-400">Raised: $450k</span>
+                            <span class="text-xs font-black text-primary-blue">78%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-100 rounded-full mb-8 overflow-hidden">
+                            <div
+                                class="h-full bg-primary-blue w-[78%] rounded-full shadow-[0_0_10px_rgba(44,123,229,0.3)]">
+                            </div>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-primary-blue font-black text-sm uppercase tracking-widest hover:gap-4 transition-all">Support
+                            Initiative <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cause 2 -->
+            <div class="bg-white rounded-[2.5rem] overflow-hidden card-shadow group flex flex-col h-full">
+                <div class="h-64 relative overflow-hidden">
+                    <img src="../img/Happy Student img.jpeg"
+                        class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Cause">
+                    <div
+                        class="absolute top-6 left-6 px-4 py-2 bg-white/90 backdrop-blur rounded-xl text-xs font-black text-emerald-600 uppercase tracking-widest shadow-sm">
+                        Tech Equity
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Skillora Digital Access Program
+                    </h4>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">Providing laptops and high-speed
+                        satellite internet to remote villages to ensure 24/7 learning access.</p>
+                    <div class="mt-auto">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-slate-400">Raised: $1.2M</span>
+                            <span class="text-xs font-black text-emerald-600">62%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-100 rounded-full mb-8 overflow-hidden">
+                            <div
+                                class="h-full bg-emerald-500 w-[62%] rounded-full shadow-[0_0_10px_rgba(16,185,129,0.3)]">
+                            </div>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-emerald-600 font-black text-sm uppercase tracking-widest hover:gap-4 transition-all">Support
+                            Initiative <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cause 3 -->
+            <div class="bg-white rounded-[2.5rem] overflow-hidden card-shadow group flex flex-col h-full">
+                <div class="h-64 relative overflow-hidden">
+                    <img src="../img/icon.jpeg"
+                        class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Cause">
+                    <div
+                        class="absolute top-6 left-6 px-4 py-2 bg-white/90 backdrop-blur rounded-xl text-xs font-black text-amber-600 uppercase tracking-widest shadow-sm">
+                        Olympiad Prep
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-1">
+                    <h4 class="text-2xl font-bold text-slate-900 mb-4 tracking-tight">Global Scholars Olympiad</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">Training gifted students for
+                        international mathematical and system design competitions through elite mentorship.</p>
+                    <div class="mt-auto">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-slate-400">Raised: $280k</span>
+                            <span class="text-xs font-black text-amber-600">92%</span>
+                        </div>
+                        <div class="w-full h-2 bg-slate-100 rounded-full mb-8 overflow-hidden">
+                            <div
+                                class="h-full bg-amber-500 w-[92%] rounded-full shadow-[0_0_10px_rgba(245,158,11,0.3)]">
+                            </div>
+                        </div>
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-amber-600 font-black text-sm uppercase tracking-widest hover:gap-4 transition-all">Support
+                            Initiative <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="py-24 bg-primary-blue text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 p-32 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-sm font-bold text-blue-200 uppercase tracking-widest">Global Impact</span>
+                <h2 class="text-4xl sm:text-5xl font-black mt-4 mb-6">Success Stories</h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto relative">
+                <div
+                    class="bg-white/10 backdrop-blur-xl border border-white/20 p-12 sm:p-20 rounded-[3rem] text-center shadow-2xl">
+                    <i data-lucide="quote" class="w-16 h-16 text-blue-400/30 mx-auto mb-8"></i>
+                    <p class="text-xl sm:text-3xl font-medium leading-[1.6] mb-12">
+                        "Skillora didn't just teach me calculus; it gave me the confidence to apply for top-tier
+                        universities. Today, I'm pursuing System Design at MIT on a full scholarship."
+                    </p>
+                    <div class="flex flex-col items-center">
+                        <img src="../img/Happy Student img.jpeg"
+                            class="w-20 h-20 rounded-full border-4 border-white shadow-xl mb-4 object-cover"
+                            alt="Student">
+                        <h5 class="text-xl font-black">Sarah Amadi</h5>
+                        <p class="text-blue-200 font-bold uppercase tracking-widest text-xs mt-1">Foundational Scholar,
+                            Lagos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional CTA -->
+    <section class="py-32 bg-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl sm:text-6xl font-black text-slate-900 mb-8 tracking-tight">Ready to Change <br> a Life
+                Today?</h2>
+            <p class="text-xl text-slate-500 font-medium mb-12 max-w-2xl mx-auto">Your donation provides elite
+                educational software, mentorship, and equipment to students who need it most.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="signup.html"
+                    class="btn-skillora btn-skillora-lg !rounded-2xl !py-6 !px-16 text-xl shadow-2xl shadow-blue-500/30 hover:scale-105 transition-all">Support
+                    Our Work</a>
+                <a href="contact.html"
+                    class="inline-flex items-center justify-center px-16 py-6 bg-slate-50 text-slate-700 font-bold rounded-2xl hover:bg-slate-100 transition-all text-xl">Get
+                    Involved</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-blue text-white pt-20 pb-10 border-t border-blue-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1">
+                    <a href="../index.html" class="flex items-center gap-3 mb-6 group">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-primary-blue shadow-lg group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black text-white tracking-tight">Skillora</span>
+                    </a>
+                    <p class="text-blue-100 text-sm leading-relaxed mb-6">Revolutionizing modern education
+                        through
+                        precision, play, and practical mastery.</p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Quick Links</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-white transition-colors">About
+                                Us</a>
+                        </li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">Services</a>
+                        </li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Support</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact
+                                Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                        </li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact/Social -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white">Connect</h4>
+                    <ul class="space-y-4 text-blue-100 text-sm mb-6">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <span>123 Innovation Dr, Tech City</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-blue-200 shrink-0"></i>
+                            <a href="mailto:hello@skillora.com"
+                                class="hover:text-white transition">hello@skillora.com</a>
+                        </li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white shadow-sm border border-blue-500 hover:bg-white hover:text-primary-blue transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-blue-500 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-blue-200 text-sm">
+                <p>&copy; 2026 Skillora. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Simple Animation Observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-animate]').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

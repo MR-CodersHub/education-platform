@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | Skillora</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/tailwind-config.js"></script>
+    <script src="https://unpkg.com/lucide@0.477.0"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js" defer></script>
+    
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: #f8fafc;
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: calc(100vh - 80px);
+        }
+
+        .sidebar {
+            background: #fff;
+            width: 280px;
+            min-width: 260px;
+            box-shadow: 2px 0 16px rgba(44, 123, 229, 0.06);
+            z-index: 40;
+            transition: left 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 2rem 1.5rem 1rem;
+        }
+
+        .sidebar-nav {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.85rem 1.25rem;
+            color: #64748b;
+            font-weight: 600;
+            border-radius: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .sidebar-link.active {
+            background: rgba(44, 123, 229, 0.08);
+            color: #2C7BE5;
+        }
+
+        .sidebar-link:hover:not(.active) {
+            background: #f8fafc;
+            color: #2C7BE5;
+        }
+
+        .sidebar-footer {
+            padding: 1.5rem;
+            border: border-slate-100;
+        }
+
+        .sidebar-logout {
+            width: 100%;
+            padding: 0.85rem;
+            color: #ef4444;
+            font-weight: 700;
+            cursor: pointer;
+            background: #fef2f2;
+            border: none;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s;
+        }
+
+        .sidebar-logout:hover {
+            background: #fee2e2;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            padding: 2rem;
+        }
+
+        /* Responsive Dashboard layout */
+        @media (max-width: 1023px) {
+            .sidebar {
+                position: fixed;
+                top: 80px;
+                left: -280px;
+                height: calc(100vh - 80px);
+                z-index: 60;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+    </script>
+</head>
+
+<body class="bg-slate-50">
+
+    <!-- Standardized Navbar -->
+    <header class="sticky top-0 z-50 glass">
+        <div class="dashboard-header-wrapper w-full px-4 sm:px-6 lg:px-8 pt-4 pb-2 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-3 no-underline group shrink-0">
+                <div
+                    class="w-10 h-10 bg-primary-blue rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition duration-300">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-black text-slate-900 tracking-tight">Skillora</span>
+            </a>
+            <div class="flex items-center gap-3">
+                <h1 class="text-xl font-extrabold text-slate-900 block md:hidden">Dashboard</h1>
+                <button id="dashboard-hamburger"
+                    class="p-2 bg-white rounded-xl border border-slate-200 text-slate-600 md:block lg:hidden">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="p-3 bg-blue-50 rounded-2xl text-primary-blue">
+                    <i data-lucide="user" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 id="userEmailDisplay" class="font-bold text-slate-900 text-sm truncate max-w-[140px]">
+                    </h3>
+                    <p class="text-[10px] font-bold text-primary-blue uppercase tracking-wider">Learning Hub</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav sidebar-nav-container no-scrollbar">
+                <a href="#" class="sidebar-link active" data-section="dashboard"><i data-lucide="layout-dashboard"></i>
+                    Dashboard</a>
+                <a href="#" class="sidebar-link" data-section="courses"><i data-lucide="book-open"></i> My Courses</a>
+                <a href="#" class="sidebar-link" data-section="lessons"><i data-lucide="file-text"></i> Lessons</a>
+                <a href="#" class="sidebar-link" data-section="assignments"><i data-lucide="clipboard-list"></i>
+                    Assignments</a>
+
+                <a href="#" class="sidebar-link" data-section="profile"><i data-lucide="user"></i> Profile Settings</a>
+                <a href="#" class="sidebar-link" data-section="support"><i data-lucide="help-circle"></i> Support</a>
+            </nav>
+            <div class="sidebar-footer sidebar-sticky-footer">
+                <button class="sidebar-logout" id="logoutBtn"><i data-lucide="log-out"></i> Logout</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Internal Dashboard Header -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-slate-900">Dashboard</h1>
+                    <p class="text-slate-500 font-medium">Manage your learning progress and upcoming tasks.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div
+                        class="px-4 py-2 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center gap-2">
+                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-xs font-bold text-slate-600 tracking-wide">STUDENT ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Section (default) -->
+            <section id="dashboard-section">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                        <span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Enrolled
+                            Courses</span>
+                        <span class="text-3xl font-black text-primary-blue">4</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                        <span class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Completed
+                            Lessons</span>
+                        <span class="text-3xl font-black text-primary-blue">27</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                        <span
+                            class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Attendance</span>
+                        <span class="text-3xl font-black text-primary-blue">96%</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                        <span
+                            class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Assignments</span>
+                        <span class="text-3xl font-black text-primary-blue">2</span>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Progress -->
+                    <div class="lg:col-span-2 bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm">
+                        <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                            <i data-lucide="bar-chart-2" class="text-primary-blue"></i> Course Progress
+                        </h2>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-bold text-slate-700">Algebraic Excellence</span>
+                                    <span class="text-sm font-bold text-primary-blue">80%</span>
+                                </div>
+                                <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary-blue rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-bold text-slate-700">Visual Calculus</span>
+                                    <span class="text-sm font-bold text-primary-blue">65%</span>
+                                </div>
+                                <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary-blue rounded-full" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-bold text-slate-700">System Design</span>
+                                    <span class="text-sm font-bold text-primary-blue">50%</span>
+                                </div>
+                                <div class="h-3 bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary-blue rounded-full" style="width: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Announcements -->
+                    <div class="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm">
+                        <h2 class="text-xl font-bold text-slate-900 mb-6">Notices</h2>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-blue-50/50 rounded-2xl border-l-4 border-primary-blue">
+                                <p class="text-sm font-medium text-slate-700">New assignment for Algebraic Excellence is
+                                    due next week.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-2xl border-l-4 border-slate-300">
+                                <p class="text-sm font-medium text-slate-700">Live Q&A session on Friday at 5:00 PM.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other Sections (shorthand representation) -->
+            <section id="courses-section" style="display:none;"
+                class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">My Courses</h2>
+                <p class="text-slate-500">List of enrolled courses and details.</p>
+            </section>
+            <section id="lessons-section" style="display:none;"
+                class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">Lessons</h2>
+                <p class="text-slate-500">All lessons and progress.</p>
+            </section>
+            <section id="assignments-section" style="display:none;"
+                class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">Assignments</h2>
+                <p class="text-slate-500">Assignment submissions and grades.</p>
+            </section>
+            <!-- Add other sections as hidden divs if they were in the original -->
+            <section id="attendance-section" style="display:none;"
+                class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm"></section>
+            <section id="results-section" style="display:none;"
+                class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm"></section>
+            <section id="messages-section" style="display:none;"
+                class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm"></section>
+            <section id="certificates-section" style="display:none;"
+                class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm"></section>
+            <section id="profile-section" style="display:none;"
+                class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm"></section>
+            <section id="support-section" style="display:none;"
+                class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm"></section>
+        </main>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Profile Update
+        function updateUserProfileHeader() {
+            const email = localStorage.getItem('userEmail') || 'student@email.com';
+            const emailEl = document.getElementById('userEmailDisplay');
+            if (emailEl) {
+                emailEl.textContent = email;
+            }
+        }
+        updateUserProfileHeader();
+
+        // Dashboard Hamburger for mobile sidebar
+        const sidebar = document.getElementById('sidebar');
+        const dashHamburger = document.getElementById('dashboard-hamburger');
+        if (dashHamburger) {
+            dashHamburger.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+        }
+
+        // Section switching
+        function switchSection(section) {
+            const allSections = ['dashboard', 'courses', 'lessons', 'assignments', 'attendance', 'results', 'messages', 'certificates', 'profile', 'support'];
+            allSections.forEach(sec => {
+                const el = document.getElementById(sec + '-section');
+                if (el) el.style.display = (sec === section) ? 'block' : 'none';
+            });
+        }
+
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                const section = this.getAttribute('data-section');
+                switchSection(section);
+                if (window.innerWidth < 1024) sidebar.classList.remove('open');
+            });
+        });
+
+
+        // Responsive Sidebar close
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) sidebar.classList.remove('open');
+        });
+    </script>
+</body>
+
+</html>
